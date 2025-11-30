@@ -1,4 +1,4 @@
-import MainPage from '../../pages/main-page/main-page';
+import MainScreen from '../../pages/main-screen/main-screen';
 
 type AppHotelsProps = {
   hotelsNumber: number;
@@ -6,7 +6,7 @@ type AppHotelsProps = {
 
 function App({hotelsNumber}: AppHotelsProps): JSX.Element {
   return (
-    <MainPage hotelsNumber={hotelsNumber}/>
+    <MainScreen hotelsNumber={hotelsNumber}/>
   );
 }
 
