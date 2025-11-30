@@ -1,4 +1,4 @@
-import Card from '../../components/card/card';
+import Card from '../../card/card';
 import Header from '../../layout/header';
 
 type MainPageProps = {
