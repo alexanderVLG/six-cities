@@ -1,5 +1,6 @@
 import Card from '../../card/card';
 import Header from '../../layout/header';
+import Map from '../../blocks/map/map';
 
 type MainPageProps = {
   hotelsNumber: number;
@@ -76,7 +77,7 @@ function MainScreen({hotelsNumber}: MainPageProps): JSX.Element {
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <Map />
             </div>
           </div>
         </div>
