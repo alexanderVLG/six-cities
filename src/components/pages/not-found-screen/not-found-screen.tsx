@@ -1,8 +1,10 @@
+import { Link } from 'react-router-dom';
+
 function NotFoundScreen() {
   return(
     <>
       <h1>Страница не найдена</h1>
-      <a href="/">Вернуться на главную страницу</a>
+      <Link to="/">Вернуться на главную страницу</Link>
     </>
   );
 }
