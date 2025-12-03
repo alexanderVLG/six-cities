@@ -1,9 +1,13 @@
+import { Helmet } from 'react-helmet-async';
 import Footer from '../../layout/footer';
 import Header from '../../layout/header';
 
 function FavoritesScreen() {
   return(
     <div className="page">
+      <Helmet>
+        <title>Страница избранных отелей</title>
+      </Helmet>
       <Header />
 
       <main className="page__main page__main--favorites">

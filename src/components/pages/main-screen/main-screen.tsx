@@ -1,6 +1,7 @@
 import Card from '../../card/card';
 import Header from '../../layout/header';
 import Map from '../../blocks/map/map';
+import { Helmet } from 'react-helmet-async';
 
 type MainPageProps = {
   hotelsNumber: number;
@@ -10,6 +11,9 @@ function MainScreen({hotelsNumber}: MainPageProps): JSX.Element {
   const count = [0, 1, 2, 3, 4];
   return(
     <div className="page page--gray page--main">
+      <Helmet>
+        <title>Бронирование отелей онлайн.</title>
+      </Helmet>
       <Header />
 
       <main className="page__main page__main--index">

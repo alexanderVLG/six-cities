@@ -1,10 +1,14 @@
 import Header from '../../layout/header';
+import { Helmet } from 'react-helmet-async';
 
 const offerInsideList = ['Wi-fi', 'Towels', 'Heating', 'Dishwasher', 'Kitchen', 'Soap'];
 
 function OfferScreen() {
   return(
     <div className="page">
+      <Helmet>
+        <title>Выберите из представленных предложений</title>
+      </Helmet>
       <Header />
 
       <main className="page__main page__main--offer">
