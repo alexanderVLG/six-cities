@@ -2,13 +2,14 @@ import Card from '../../card/card';
 import Header from '../../layout/header';
 import Map from '../../blocks/map/map';
 import { Helmet } from 'react-helmet-async';
+import { Offer } from '../../../types/offer';
 
 type MainPageProps = {
   hotelsNumber: number;
+  offer: Offer[];
 }
 
-function MainScreen({hotelsNumber}: MainPageProps): JSX.Element {
-  const count = [0, 1, 2, 3, 4];
+function MainScreen({hotelsNumber, offer}: MainPageProps): JSX.Element {
   return(
     <div className="page page--gray page--main">
       <Helmet>
@@ -75,9 +76,7 @@ function MainScreen({hotelsNumber}: MainPageProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {count.map((item) => (
-                  <Card key={item} />
-                ))}
+                <Card offer={offer}/>
               </div>
             </section>
             <div className="cities__right-section">

@@ -21,7 +21,12 @@ function App({hotelsNumber, offer}: AppHotelsProps): JSX.Element {
         <Routes>
           <Route
             path={AppRoute.Root}
-            element={<MainScreen hotelsNumber={hotelsNumber}/>}
+            element={
+              <MainScreen
+                hotelsNumber={hotelsNumber}
+                offer={offer}
+              />
+            }
           />
           <Route
             path={AppRoute.Favorites}
