@@ -1,8 +1,8 @@
-import Card from '../../card/card';
 import Header from '../../layout/header';
 import Map from '../../blocks/map/map';
 import { Helmet } from 'react-helmet-async';
 import { Offer } from '../../../types/offer';
+import OfferList from '../../blocks/offer-list/offer-list';
 
 type MainPageProps = {
   hotelsNumber: number;
@@ -75,9 +75,7 @@ function MainScreen({hotelsNumber, offer}: MainPageProps): JSX.Element {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                <Card offer={offer}/>
-              </div>
+              <OfferList offer={offer} />
             </section>
             <div className="cities__right-section">
               <Map />
