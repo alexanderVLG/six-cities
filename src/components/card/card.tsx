@@ -1,44 +1,87 @@
 import { Offer } from '../../types/offer';
+import { Favorite } from '../../types/favorite';
 
+type CardVariantProps = 'cities' | 'favorites';
 
 type CardProps = {
-  offer: Offer;
+  data: Offer | Favorite;
+  variant?: CardVariantProps;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
   isActive?: boolean;
 }
 
 function Card({
-  offer,
+  data,
+  variant,
   onMouseEnter,
   onMouseLeave,
   isActive
 }: CardProps): JSX.Element {
+
+  const getContainerClasses = () => {
+    switch (variant) {
+      case 'favorites':
+        return 'favorites__card place-card';
+      case 'cities':
+      default:
+        return `cities__card place-card ${isActive ? 'active' : null}`;
+    }
+  };
+
+  const getImageWrapperClasses = () => {
+    switch (variant) {
+      case 'favorites':
+        return 'favorites__image-wrapper place-card__image-wrapper';
+      case 'cities':
+      default:
+        return 'cities__image-wrapper place-card__image-wrapper';
+    }
+  };
+
+  const getInfoClasses = () => {
+    if (variant === 'favorites') {
+      return 'favorites__card-info place-card__info';
+    }
+    return 'place-card__info';
+  };
+
+  const getImageSize = () => {
+    switch (variant) {
+      case 'favorites':
+        return { width: 150, height: 110 };
+      default:
+        return { width: 260, height: 200 };
+    }
+  };
+
+  const {width, height} = getImageSize();
+
   return (
     <article
-      key={offer.id}
-      className={`cities__card place-card ${isActive ? 'active' : null}`}
+      key={data.id}
+      className={getContainerClasses()}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      {offer.isPremium ? (
+      {data.isPremium ? (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
       ) : null}
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={getImageWrapperClasses()}>
         <a href="#">
-          <img className="place-card__image" src={offer.previewImage} width="260" height="200" alt="Place image" />
+          <img className="place-card__image" src={data.previewImage} width={width} height={height} alt="Place image" />
         </a>
       </div>
-      <div className="place-card__info">
+      <div className={getInfoClasses()}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
-            <b className="place-card__price-value">&euro;{offer.price}</b>
+            <b className="place-card__price-value">&euro;{data.price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
           <button className={`place-card__bookmark-button button ${
-            offer.isFavorite ? 'place-card__bookmark-button--active' : ''
+            data.isFavorite ? 'place-card__bookmark-button--active' : ''
           }`}
           type="button"
           >
@@ -50,14 +93,14 @@ function Card({
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: `${(offer.rating / 5) * 100}%`}}></span>
+            <span style={{width: `${(data.rating / 5) * 100}%`}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{offer.title}</a>
+          <a href="#">{data.title}</a>
         </h2>
-        <p className="place-card__type">{offer.type}</p>
+        <p className="place-card__type">{data.type}</p>
       </div>
     </article>);
 

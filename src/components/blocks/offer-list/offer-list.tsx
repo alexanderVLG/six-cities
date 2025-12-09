@@ -23,7 +23,8 @@ function OfferList({offer}: OfferListProps): JSX.Element {
         offer.map((item) => (
           <Card
             key={item.id}
-            offer={item}
+            data={item}
+            variant="cities"
             onMouseEnter={() => handleMouseEnter(item.id)}
             onMouseLeave={handleMouseLeave}
             isActive={activeCardId === item.id}
