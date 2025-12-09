@@ -1,8 +1,13 @@
 import { Helmet } from 'react-helmet-async';
 import Footer from '../../layout/footer';
 import Header from '../../layout/header';
+import { Favorite } from '../../../types/favorite';
 
-function FavoritesScreen() {
+type FavoriteProps = {
+  favorite: Favorite[];
+}
+
+function FavoritesScreen({favorite}: FavoriteProps):JSX.Element {
   return(
     <div className="page">
       <Helmet>

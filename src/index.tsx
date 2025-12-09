@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
 import { Hotels} from './const';
-import { offers } from './mocks/offers';
+import { Offers} from './mocks/offers';
+import { Favorites } from './mocks/favorites';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -12,7 +13,8 @@ root.render(
   <React.StrictMode>
     <App
       hotelsNumber = {Hotels.hotelsNumber}
-      offer={offers}
+      offer={Offers}
+      favorite={Favorites}
     />
   </React.StrictMode>
 );

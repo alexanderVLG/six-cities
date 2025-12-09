@@ -8,13 +8,15 @@ import OfferScreen from '../pages/offer-screen/offer-screen';
 import NotFoundScreen from '../pages/not-found-screen/not-found-screen';
 import PrivateRoute from '../private-route/private-route';
 import {Offer} from '../../types/offer';
+import { Favorite } from '../../types/favorite';
 
 type AppHotelsProps = {
   hotelsNumber: number;
   offer: Offer[];
+  favorite: Favorite[];
 }
 
-function App({hotelsNumber, offer}: AppHotelsProps): JSX.Element {
+function App({hotelsNumber, offer, favorite}: AppHotelsProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -34,7 +36,7 @@ function App({hotelsNumber, offer}: AppHotelsProps): JSX.Element {
               <PrivateRoute
                 authorizationStatus={AuthorizationStatus.NoAuth}
               >
-                <FavoritesScreen />
+                <FavoritesScreen favorite={favorite} />
               </PrivateRoute>
             }
           />
