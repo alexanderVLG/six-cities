@@ -1,4 +1,4 @@
-function Review () {
+function NewComment () {
   return (
     <form className="reviews__form form" action="#" method="post">
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
@@ -49,4 +49,4 @@ function Review () {
   );
 }
 
-export default Review;
+export default NewComment;

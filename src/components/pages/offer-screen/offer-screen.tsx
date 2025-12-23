@@ -1,6 +1,6 @@
-import Review from '../../blocks/review/Review';
 import Header from '../../layout/header';
 import { Helmet } from 'react-helmet-async';
+import NewComment from '../../blocks/new-comment/new-comment';
 
 const offerInsideList = ['Wi-fi', 'Towels', 'Heating', 'Dishwasher', 'Kitchen', 'Soap'];
 
@@ -130,7 +130,7 @@ function OfferScreen() {
                     </div>
                   </li>
                 </ul>
-                <Review />
+                <NewComment />
               </section>
             </div>
           </div>
