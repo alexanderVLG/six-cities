@@ -1,10 +1,15 @@
 import Header from '../../layout/header';
 import { Helmet } from 'react-helmet-async';
 import Reviews from '../../blocks/reviews/reviews';
+import { Comment } from '../../../types/comment';
+
+type OfferScreenProps = {
+  review: Comment[];
+}
 
 const offerInsideList = ['Wi-fi', 'Towels', 'Heating', 'Dishwasher', 'Kitchen', 'Soap'];
 
-function OfferScreen() {
+function OfferScreen({review}: OfferScreenProps): JSX.Element {
   return(
     <div className="page">
       <Helmet>
@@ -104,7 +109,7 @@ function OfferScreen() {
                   </p>
                 </div>
               </div>
-              <Reviews />
+              <Reviews review={review} />
             </div>
           </div>
           <section className="offer__map map"></section>
