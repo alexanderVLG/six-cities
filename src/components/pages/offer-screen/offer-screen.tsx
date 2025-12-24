@@ -1,6 +1,5 @@
 import Header from '../../layout/header';
 import { Helmet } from 'react-helmet-async';
-import NewReview from '../../blocks/new-review/new-review';
 import Reviews from '../../blocks/reviews/reviews';
 
 const offerInsideList = ['Wi-fi', 'Towels', 'Heating', 'Dishwasher', 'Kitchen', 'Soap'];
@@ -105,11 +104,7 @@ function OfferScreen() {
                   </p>
                 </div>
               </div>
-              <section className="offer__reviews reviews">
-                <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
-                <Reviews />
-                <NewReview />
-              </section>
+              <Reviews />
             </div>
           </div>
           <section className="offer__map map"></section>
