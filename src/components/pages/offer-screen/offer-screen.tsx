@@ -4,12 +4,12 @@ import Reviews from '../../blocks/reviews/reviews';
 import { Comment } from '../../../types/comment';
 
 type OfferScreenProps = {
-  review: Comment[];
+  reviews: Comment[];
 }
 
 const offerInsideList = ['Wi-fi', 'Towels', 'Heating', 'Dishwasher', 'Kitchen', 'Soap'];
 
-function OfferScreen({review}: OfferScreenProps): JSX.Element {
+function OfferScreen({reviews}: OfferScreenProps): JSX.Element {
   return(
     <div className="page">
       <Helmet>
@@ -109,7 +109,7 @@ function OfferScreen({review}: OfferScreenProps): JSX.Element {
                   </p>
                 </div>
               </div>
-              <Reviews review={review} />
+              <Reviews reviews={reviews} />
             </div>
           </div>
           <section className="offer__map map"></section>
