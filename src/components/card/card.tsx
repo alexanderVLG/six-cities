@@ -1,5 +1,7 @@
+import { Link } from 'react-router-dom';
 import { Offer } from '../../types/offer';
 import { Favorite } from '../../types/favorite';
+import { AppRoute } from '../../const';
 
 type CardVariantProps = 'cities' | 'favorites';
 
@@ -98,12 +100,11 @@ function Card({
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{data.title}</a>
+          <Link to={AppRoute.Offer}>{data.title}</Link>
         </h2>
         <p className="place-card__type">{data.type}</p>
       </div>
     </article>);
-
 }
 
 export default Card;
