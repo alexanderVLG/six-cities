@@ -6,9 +6,17 @@ type ReviewProps = {
 }
 
 function Reviews({reviews}: ReviewProps): JSX.Element {
+  const amountReview: number = reviews.length;
+
+  const formatDate = (dateString: string): string => {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.toLocaleString('en-US', { month: 'long' });
+    return `${month} ${day}`;
+  };
   return (
     <section className="offer__reviews reviews">
-      <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
+      <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{amountReview}</span></h2>
       <ul className="reviews__list">
         {reviews.map((review) => (
           <li key={review.id} className="reviews__item">
@@ -36,7 +44,7 @@ function Reviews({reviews}: ReviewProps): JSX.Element {
               <p className="reviews__text">
                 {review.comment}
               </p>
-              <time className="reviews__time" dateTime={review.date}>{review.date}</time>
+              <time className="reviews__time" dateTime={review.date}>{formatDate(review.date)}</time>
             </div>
           </li>
         ))}
