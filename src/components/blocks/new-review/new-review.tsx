@@ -1,4 +1,5 @@
 import { ChangeEvent, useState } from 'react';
+import { CommentLentgh } from '../../../const';
 
 const mockStars = [
   {
@@ -45,7 +46,7 @@ function NewReview () {
     setReview(event.target.value);
   };
 
-  const isButtonDisabled: boolean = review.trim().length < 50;
+  const isButtonDisabled: boolean = review.trim().length < CommentLentgh.MIN;
 
   return (
     <form className="reviews__form form" action="#" method="post">

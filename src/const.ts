@@ -12,5 +12,10 @@ export enum AppRoute {
 export enum AuthorizationStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
-  Unknown = 'UNKNOWN',
+  Unknown = 'UNKNOWN'
 }
+
+export const CommentLentgh = {
+  MIN: 50,
+  MAX: 300
+};
