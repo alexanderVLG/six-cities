@@ -1,9 +1,9 @@
 import NewReview from '../new-review/new-review';
-import { Comment } from '../../../types/comment';
+import { ReviewType } from '../../../types';
 import { formatDate } from '../../../utils';
 
 type ReviewProps = {
-  reviews: Comment[];
+  reviews: ReviewType[];
 }
 
 function Reviews({reviews}: ReviewProps): JSX.Element {

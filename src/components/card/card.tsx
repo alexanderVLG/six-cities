@@ -1,12 +1,11 @@
 import { Link } from 'react-router-dom';
-import { Offer } from '../../types/offer';
-import { Favorite } from '../../types/favorite';
+import { OfferType, PlaceOfferType } from '../../types';
 import { AppRoute } from '../../const';
 
 type CardVariantProps = 'cities' | 'favorites';
 
 type CardProps = {
-  data: Offer | Favorite;
+  data: OfferType | PlaceOfferType;
   variant?: CardVariantProps;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
