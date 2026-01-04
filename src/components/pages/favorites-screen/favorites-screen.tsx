@@ -1,14 +1,14 @@
 import { Helmet } from 'react-helmet-async';
+import { PlaceOfferType } from '../../../types';
 import Footer from '../../layout/footer';
 import Header from '../../layout/header';
-import { Favorite } from '../../../types/favorite';
 import Card from '../../card/card';
 
 type FavoriteProps = {
-  favorite: Favorite[];
+  placeOffers: PlaceOfferType[];
 }
 
-function FavoritesScreen({favorite}: FavoriteProps):JSX.Element {
+function FavoritesScreen({placeOffers}: FavoriteProps):JSX.Element {
   return(
     <div className="page">
       <Helmet>
@@ -31,7 +31,7 @@ function FavoritesScreen({favorite}: FavoriteProps):JSX.Element {
                 </div>
                 <div className="favorites__places">
                   {
-                    favorite.map((item) => (
+                    placeOffers.map((item) => (
                       <Card
                         key={item.id}
                         data={item}
@@ -52,7 +52,7 @@ function FavoritesScreen({favorite}: FavoriteProps):JSX.Element {
                 </div>
                 <div className="favorites__places">
                   {
-                    favorite.map((item) => (
+                    placeOffers.map((item) => (
                       <Card
                         key={item.id}
                         data={item}
