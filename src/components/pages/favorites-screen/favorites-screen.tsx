@@ -12,7 +12,7 @@ function FavoritesScreen({placeOffers}: FavoriteProps):JSX.Element {
   return(
     <div className="page">
       <Helmet>
-        <title>Страница избранных отелей</title>
+        <title>6 городов | Избранное</title>
       </Helmet>
       <Header />
 
