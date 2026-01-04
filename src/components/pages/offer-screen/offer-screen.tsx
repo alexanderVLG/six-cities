@@ -1,10 +1,10 @@
 import Header from '../../layout/header';
 import { Helmet } from 'react-helmet-async';
 import Reviews from '../../blocks/reviews/reviews';
-import { Comment } from '../../../types/comment';
+import { ReviewType } from '../../../types';
 
 type OfferScreenProps = {
-  reviews: Comment[];
+  reviews: ReviewType[];
 }
 
 const offerInsideList = ['Wi-fi', 'Towels', 'Heating', 'Dishwasher', 'Kitchen', 'Soap'];

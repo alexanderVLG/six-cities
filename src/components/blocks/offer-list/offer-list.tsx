@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Card from '../../card/card';
-import { Offer } from '../../../types/offer';
+import { OfferType } from '../../../types';
 
 type OfferListProps = {
-  offer: Offer[];
+  offer: OfferType[];
 }
 
 function OfferList({offer}: OfferListProps): JSX.Element {

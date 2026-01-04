@@ -11,9 +11,9 @@ import PrivateRoute from '../private-route/private-route';
 
 type AppHotelsProps = {
   hotelsNumber: number;
-  offer: OfferType;
-  placeOffers: PlaceOfferType;
-  reviews: ReviewType;
+  offer: OfferType[];
+  placeOffers: PlaceOfferType[];
+  reviews: ReviewType[];
 }
 
 function App({hotelsNumber, offer, placeOffers, reviews}: AppHotelsProps): JSX.Element {

@@ -1,12 +1,12 @@
 import Header from '../../layout/header';
 import Map from '../../blocks/map/map';
 import { Helmet } from 'react-helmet-async';
-import { Offer } from '../../../types/offer';
+import { OfferType } from '../../../types';
 import OfferList from '../../blocks/offer-list/offer-list';
 
 type MainPageProps = {
   hotelsNumber: number;
-  offer: Offer[];
+  offer: OfferType[];
 }
 
 function MainScreen({hotelsNumber, offer}: MainPageProps): JSX.Element {
