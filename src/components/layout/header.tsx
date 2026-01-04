@@ -1,4 +1,4 @@
-import Logo from '../blocks/logo/logo';
+import Logo from '../logo/logo';
 
 function Header() {
   return(

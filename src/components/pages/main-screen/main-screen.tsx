@@ -1,8 +1,8 @@
 import Header from '../../layout/header';
-import Map from '../../blocks/map/map';
+import Map from '../../map/map';
 import { Helmet } from 'react-helmet-async';
 import { OfferType } from '../../../types';
-import OfferList from '../../blocks/offer-list/offer-list';
+import OfferList from '../../offer/offer-list';
 
 type MainPageProps = {
   hotelsNumber: number;

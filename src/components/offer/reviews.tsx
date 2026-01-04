@@ -1,6 +1,6 @@
-import NewReview from '../new-review/new-review';
-import { ReviewType } from '../../../types';
-import { formatDate } from '../../../utils';
+import NewReview from './new-review';
+import { ReviewType } from '../../types';
+import { formatDate } from '../../utils';
 
 type ReviewProps = {
   reviews: ReviewType[];

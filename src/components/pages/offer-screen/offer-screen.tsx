@@ -1,6 +1,6 @@
 import Header from '../../layout/header';
 import { Helmet } from 'react-helmet-async';
-import Reviews from '../../blocks/reviews/reviews';
+import Reviews from '../../offer/reviews';
 import { ReviewType } from '../../../types';
 
 type OfferScreenProps = {

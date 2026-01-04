@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from 'react';
-import { CommentLentgh } from '../../../const';
+import { CommentLentgh } from '../../const';
 
 const mockStars = [
   {
