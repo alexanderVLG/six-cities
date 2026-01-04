@@ -1,5 +1,6 @@
 import NewReview from '../new-review/new-review';
 import { Comment } from '../../../types/comment';
+import { formatDate } from '../../../utils';
 
 type ReviewProps = {
   reviews: Comment[];
@@ -8,12 +9,6 @@ type ReviewProps = {
 function Reviews({reviews}: ReviewProps): JSX.Element {
   const amountReview: number = reviews.length;
 
-  const formatDate = (dateString: string): string => {
-    const date = new Date(dateString);
-    const day = date.getDate();
-    const month = date.toLocaleString('en-US', { month: 'long' });
-    return `${month} ${day}`;
-  };
   return (
     <section className="offer__reviews reviews">
       <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{amountReview}</span></h2>
