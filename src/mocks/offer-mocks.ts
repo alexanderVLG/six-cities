@@ -1,4 +1,4 @@
-export const offer = {
+export const offers = [{
   id: '9c21c854-fb07-4822-ac05-cb2da82ea586',
   title: 'Loft Studio in the Central Area',
   description: 'I am happy to welcome you to my apartment in the city center! Three words: location, cosy and chic!',
@@ -43,4 +43,5 @@ export const offer = {
   rating: 3.2,
   bedrooms: 5,
   maxAdults: 2
-};
+}
+];
