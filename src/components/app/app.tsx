@@ -34,7 +34,7 @@ function App({hotelsNumber, offer, placeOffers, reviews}: AppHotelsProps): JSX.E
             path={AppRoute.Favorites}
             element={
               <PrivateRoute
-                authorizationStatus={AuthorizationStatus.NoAuth}
+                authorizationStatus={AuthorizationStatus.Auth}
               >
                 <FavoritesScreen placeOffers={placeOffers} />
               </PrivateRoute>
