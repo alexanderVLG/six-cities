@@ -8,8 +8,7 @@ type CardProps = {
   classNameCard: string;
   imageWidth: string;
   imageHeight: string;
-  onMouseEnter?: () => void;
-  onMouseLeave?: () => void;
+  onOfferHover?: (value: string) => void;
 }
 
 const PremiumMark = (): JSX.Element => (
@@ -23,8 +22,7 @@ function Card({
   classNameCard,
   imageWidth,
   imageHeight,
-  onMouseEnter,
-  onMouseLeave
+  onOfferHover
 }: CardProps): JSX.Element {
 
   const {title, previewImage, price, isFavorite, rating, type} = placeOffer;
@@ -37,11 +35,23 @@ function Card({
     FOR_DIV: `${classNameCard }__image-wrapper place-card__image-wrapper`
   };
 
+  const handleCardMouseEnter = (id: string): void => {
+    if (onOfferHover) {
+      onOfferHover(id);
+    }
+  };
+
+  const handleCardMouseLeave = (): void => {
+    if (onOfferHover) {
+      onOfferHover('');
+    }
+  };
+
   return (
     <article
       className={CardStyle.FOR_ARTICLE}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
+      onMouseLeave={() => handleCardMouseLeave()}
+      onMouseEnter={() => handleCardMouseEnter(placeOffer.id)}
     >
       {isFavorite ? <PremiumMark /> : ''}
 
