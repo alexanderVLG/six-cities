@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { PlaceOfferType } from '../../types';
 import { AppRoute } from '../../const';
+import { ratingInProcent } from '../../utils';
 
 
 type CardProps = {
@@ -29,7 +30,7 @@ function Card({
   const favoriteClass = isFavorite
     ? 'place-card__bookmark-button place-card__bookmark-button--active button'
     : 'place-card__bookmark-button button';
-
+  const ratingStars = ratingInProcent(rating);
   const CardStyle = {
     FOR_ARTICLE: `${classNameCard }__card place-card`,
     FOR_DIV: `${classNameCard }__image-wrapper place-card__image-wrapper`
@@ -75,7 +76,7 @@ function Card({
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: `${(rating / 5) * 100}%`}}></span>
+            <span style={{width: ratingStars}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>

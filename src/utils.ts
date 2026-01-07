@@ -5,3 +5,8 @@ export const formatDate = (dateString: string): string => {
   return `${month} ${day}`;
 };
 
+export const ratingInProcent = (rating: number): string => {
+  const procent = 100;
+  const ratingScale = 5;
+  return `${(rating / ratingScale) * procent}`;
+};
