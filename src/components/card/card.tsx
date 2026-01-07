@@ -56,9 +56,9 @@ function Card({
       {isFavorite ? <PremiumMark /> : ''}
 
       <div className={CardStyle.FOR_DIV}>
-        <a href="#">
+        <Link to={AppRoute.OFFER}>
           <img className="place-card__image" src={previewImage} width={imageWidth} height={imageHeight} alt="Place image" />
-        </a>
+        </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
@@ -80,7 +80,7 @@ function Card({
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={AppRoute.Offer}>{title}</Link>
+          <Link to={AppRoute.OFFER}>{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>

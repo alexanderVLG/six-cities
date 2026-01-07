@@ -22,7 +22,7 @@ function App({hotelsNumber, offer, placeOffers, reviews}: AppHotelsProps): JSX.E
       <BrowserRouter>
         <Routes>
           <Route
-            path={AppRoute.Root}
+            path={AppRoute.MAIN}
             element={
               <MainScreen
                 hotelsNumber={hotelsNumber}
@@ -31,7 +31,7 @@ function App({hotelsNumber, offer, placeOffers, reviews}: AppHotelsProps): JSX.E
             }
           />
           <Route
-            path={AppRoute.Favorites}
+            path={AppRoute.FAVORITES}
             element={
               <PrivateRoute
                 authorizationStatus={AuthorizationStatus.Auth}
@@ -41,11 +41,11 @@ function App({hotelsNumber, offer, placeOffers, reviews}: AppHotelsProps): JSX.E
             }
           />
           <Route
-            path={AppRoute.Login}
+            path={AppRoute.LOGIN}
             element={<LoginScreen />}
           />
           <Route
-            path={AppRoute.Offer}
+            path={AppRoute.OFFER}
             element={<OfferScreen reviews={reviews}/>}
           />
           <Route

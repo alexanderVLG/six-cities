@@ -29,8 +29,10 @@ const FavoritesItem = ({cityOffers}: FavoritesItemProps): JSX.Element => (
           (
             <Card
               key={offer.id}
-              data={offer}
-              variant='favorites'
+              placeOffer={offer}
+              classNameCard='favorites'
+              imageWidth='150'
+              imageHeight='110'
             />
           ))
       }

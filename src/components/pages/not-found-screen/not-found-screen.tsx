@@ -9,7 +9,7 @@ function NotFoundScreen() {
         <title>Страница не найдена</title>
       </Helmet>
       <h1>Страница не найдена</h1>
-      <Link to={AppRoute.Root}>Вернуться на главную страницу</Link>
+      <Link to={AppRoute.MAIN}>Вернуться на главную страницу</Link>
     </>
   );
 }

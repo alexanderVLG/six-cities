@@ -4,12 +4,12 @@ export const Hotels = {
   hotelsNumber: 312
 };
 
-export enum AppRoute {
-  Root = '/',
-  Favorites = '/favorites',
-  Login = '/login',
-  Offer = '/offer/:id'
-}
+export const AppRoute = {
+  MAIN: '/',
+  LOGIN: '/login',
+  FAVORITES: '/favorites',
+  OFFER: '/offer/:id',
+} as const;
 
 export enum AuthorizationStatus {
   Auth = 'AUTH',
