@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {HelmetProvider} from 'react-helmet-async';
 import { OfferType, PlaceOfferType, ReviewType } from '../../types';
@@ -14,9 +15,16 @@ type AppHotelsProps = {
   offer: OfferType[];
   placeOffers: PlaceOfferType[];
   reviews: ReviewType[];
+  cities: string[];
 }
 
-function App({hotelsNumber, offer, placeOffers, reviews}: AppHotelsProps): JSX.Element {
+function App({hotelsNumber, offer, placeOffers, reviews, cities}: AppHotelsProps): JSX.Element {
+  const [currentCity, setCurrentCity] = useState('Paris');
+
+  const handleCityLinkClick = (value: string) => {
+    setCurrentCity(value);
+  };
+
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -27,6 +35,9 @@ function App({hotelsNumber, offer, placeOffers, reviews}: AppHotelsProps): JSX.E
               <MainScreen
                 hotelsNumber={hotelsNumber}
                 offer={offer}
+                cities={cities}
+                onCityClick={handleCityLinkClick}
+                currentCity={currentCity}
               />
             }
           />

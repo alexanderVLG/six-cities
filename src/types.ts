@@ -44,3 +44,7 @@ export type User = {
   avatarUrl: string;
   isPro: boolean;
 };
+
+export type Cities = {
+  cities: string[];
+}

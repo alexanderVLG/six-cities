@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Header from '../../layout/header';
 import Map from '../../map/map';
 import { Helmet } from 'react-helmet-async';
@@ -9,11 +8,12 @@ import LocationsList from '../../locations/locations-list';
 type MainPageProps = {
   hotelsNumber: number;
   offer: OfferType[];
+  cities: string[];
+  onCityClick: (value: string) => void;
+  currentCity: string;
 }
 
-const MainScreen = ({hotelsNumber, offer, cities}: MainPageProps): JSX.Element => (
-  const [currentCity, setCurrentCity] = useState('Amsterdam');
-
+const MainScreen = ({hotelsNumber, offer, cities, onCityClick, currentCity}: MainPageProps): JSX.Element => (
   <div className="page page--gray page--main">
     <Helmet>
       <title>Бронирование отелей онлайн.</title>
@@ -22,7 +22,7 @@ const MainScreen = ({hotelsNumber, offer, cities}: MainPageProps): JSX.Element =
 
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
-      <LocationsList cities={cities} onCity={(value:string) => setCurrentCity(value)} currentCity={currentCity}/>
+      <LocationsList cities={cities} onCityClick={onCityClick} currentCity={currentCity}/>
       <div className="cities">
         <div className="cities__places-container container">
           <section className="cities__places places">
