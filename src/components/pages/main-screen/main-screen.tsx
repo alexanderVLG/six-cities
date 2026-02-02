@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { OfferType } from '../../../types';
 import OfferList from '../../offer/offer-list';
 import LocationsList from '../../locations/locations-list';
+import { CITIES } from '../../../const';
 
 type MainPageProps = {
   hotelsNumber: number;
@@ -12,6 +13,8 @@ type MainPageProps = {
   onCityClick: (value: string) => void;
   currentCity: string;
 }
+
+type CityName = typeof CITIES[number];
 
 const MainScreen = ({hotelsNumber, offer, cities, onCityClick, currentCity}: MainPageProps): JSX.Element => (
   <div className="page page--gray page--main">
