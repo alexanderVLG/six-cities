@@ -1,10 +1,10 @@
 import { Helmet } from 'react-helmet-async';
 import {nanoid} from '@reduxjs/toolkit';
-import { PlaceOfferType } from '../../../types';
-import Footer from '../../layout/footer';
-import Header from '../../layout/header';
-import Card from '../../card/card';
-import { CITIES } from '../../../const';
+import { PlaceOfferType } from '../../types';
+import Footer from '../../components/layout/footer';
+import Header from '../../components/layout/header';
+import Card from '../../components/card/card';
+import { CITIES } from '../../const';
 
 type FavoritesProps = {
   placeOffers: PlaceOfferType[];

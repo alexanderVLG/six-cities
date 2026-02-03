@@ -1,7 +1,7 @@
-import Header from '../../layout/header';
+import Header from '../../components/layout/header';
 import { Helmet } from 'react-helmet-async';
-import Reviews from '../../offer/reviews';
-import { ReviewType } from '../../../types';
+import Reviews from '../../components/offer/reviews';
+import { ReviewType } from '../../types';
 
 type OfferScreenProps = {
   reviews: ReviewType[];

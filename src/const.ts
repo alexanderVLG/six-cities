@@ -1,5 +1,7 @@
 export const CITIES = ['Amsterdam', 'Cologne', 'Brussels', 'Paris', 'Hamburg', 'Dusseldorf'];
 
+export const PLACES_OPTIONS = ['Popular', 'Price: low to high', 'Price: high to low', 'Top rated first'];
+
 export const Hotels = {
   hotelsNumber: 312
 };

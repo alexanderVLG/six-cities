@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
-import { Hotels, CITIES} from './const';
+import { Hotels, CITIES, PLACES_OPTIONS} from './const';
 import { offers} from './mocks/offer-mocks';
 import { placeOffers } from './mocks/places-mocks';
 import { reviews } from './mocks/reviews-mocks';
@@ -18,6 +18,8 @@ root.render(
       placeOffers={placeOffers}
       reviews={reviews}
       cities={CITIES}
+      placesOptions={PLACES_OPTIONS}
+
     />
   </React.StrictMode>
 );

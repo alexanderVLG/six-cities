@@ -3,11 +3,11 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {HelmetProvider} from 'react-helmet-async';
 import { OfferType, PlaceOfferType, ReviewType } from '../../types';
 import { AppRoute, AuthorizationStatus} from '../../const';
-import MainScreen from '../pages/main-screen/main-screen';
-import FavoritesScreen from '../pages/favorites-screen/favorites-screen';
-import LoginScreen from '../pages/login-screen/login-screen';
-import OfferScreen from '../pages/offer-screen/offer-screen';
-import NotFoundScreen from '../pages/not-found-screen/not-found-screen';
+import MainScreen from '../../pages/main-screen/main-screen';
+import FavoritesScreen from '../../pages/favorites-screen/favorites-screen';
+import LoginScreen from '../../pages/login-screen/login-screen';
+import OfferScreen from '../../pages/offer-screen/offer-screen';
+import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import PrivateRoute from '../private-route/private-route';
 
 type AppHotelsProps = {
@@ -16,9 +16,10 @@ type AppHotelsProps = {
   placeOffers: PlaceOfferType[];
   reviews: ReviewType[];
   cities: string[];
+  placesOptions: string[];
 }
 
-function App({hotelsNumber, offer, placeOffers, reviews, cities}: AppHotelsProps): JSX.Element {
+function App({hotelsNumber, offer, placeOffers, reviews, cities, placesOptions}: AppHotelsProps): JSX.Element {
   const [currentCity, setCurrentCity] = useState('Paris');
 
   const handleCityLinkClick = (value: string) => {
@@ -38,6 +39,7 @@ function App({hotelsNumber, offer, placeOffers, reviews, cities}: AppHotelsProps
                 cities={cities}
                 onCityClick={handleCityLinkClick}
                 currentCity={currentCity}
+                placesOptions={placesOptions}
               />
             }
           />
