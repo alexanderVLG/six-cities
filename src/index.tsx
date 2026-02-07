@@ -17,7 +17,6 @@ root.render(
       reviews={reviews}
       cities={CITIES}
       placesOptions={PLACES_OPTIONS}
-
     />
   </React.StrictMode>
 );
