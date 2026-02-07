@@ -1,17 +1,17 @@
 import Card from '../card/card';
-import { OfferType } from '../../types';
+import { PlaceOfferType } from '../../types';
 
 type OfferListProps = {
-  offer: OfferType[];
+  placeOffer: PlaceOfferType[];
 }
 
-function OfferList({offer}: OfferListProps): JSX.Element {
+function OfferList({placeOffer}: OfferListProps): JSX.Element {
 
 
   return (
     <div className="cities__places-list places__list tabs__content">
       {
-        offer.map((item) => (
+        placeOffer.map((item) => (
           <Card
             key={item.id}
             placeOffer={item}
