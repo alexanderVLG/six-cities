@@ -5,6 +5,14 @@ export type City = {
   zoom: number;
 }
 
+export type Point = {
+  title: string;
+  latitude: number;
+  longitude: number;
+}
+
+export type Points = Point[];
+
 export type LocationType = {
   latitude: number;
   longitude: number;

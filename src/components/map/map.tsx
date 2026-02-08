@@ -1,11 +1,15 @@
 import { Icon, Marker, layerGroup } from 'leaflet';
-import { City, PlaceOfferType } from '../../types';
+import { City, Point, Points} from '../../types';
+import useMap from '../../hooks/use-map';
 import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT } from '../../const';
 import 'leaflet/dist/leaflet.css';
+import { useEffect, useRef } from 'react';
 
 type MapProps = {
   city: City;
-  placeOfferType: PlaceOfferType[];
+  points: Points;
+  selectedPoint: Point | undefined;
+
 }
 
 const defaultCustomIcon = new Icon({
@@ -21,9 +25,43 @@ const currentCustomIcon = new Icon({
 });
 
 function Map(props: MapProps):JSX.Element {
-  const {city, placeOfferType} = props;
+  const {city, points, selectedPoint} = props;
+
+  const mapRef = useRef(null);
+  const map = useMap(mapRef, city);
+
+  useEffect(() => {
+    if(map) {
+      const markerLayer = layerGroup().addTo(map);
+      points.forEach((point) => {
+        const marker = new Marker({
+          lat: point.latitude,
+          lng: point.longitude
+        });
+
+
+        marker
+          .setIcon(
+            selectedPoint !== undefined && point.title === selectedPoint.title
+              ? currentCustomIcon
+              : defaultCustomIcon
+          )
+          .addTo(markerLayer);
+
+      });
+
+
+      return () => {
+        map.removeLayer(markerLayer);
+      };
+
+    }
+  }, [map, points, selectedPoint]);
+
   return (
-    <section className="cities__map map"></section>
+    <section className="cities__map map">
+      <div style={{height: '500px'}} ref={mapRef}></div>
+    </section>
   );
 }
 
