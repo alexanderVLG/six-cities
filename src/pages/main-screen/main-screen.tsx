@@ -35,7 +35,7 @@ const MainScreen = ({hotelsNumber, cities, onCityClick, currentCity, placesOptio
             <OfferList placeOffer={placeOffers}/>
           </section>
           <div className="cities__right-section">
-            <Map />
+            <Map placeOffers={placeOffers} />
           </div>
         </div>
       </div>

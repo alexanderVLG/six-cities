@@ -1,5 +1,5 @@
 import { Icon, Marker, layerGroup } from 'leaflet';
-import { CityType, Point, Points} from '../../types';
+import { CityType, Point, Points, PlaceOfferType} from '../../types';
 import useMap from '../../hooks/use-map';
 import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT } from '../../const';
 import 'leaflet/dist/leaflet.css';
@@ -9,6 +9,7 @@ type MapProps = {
   city: CityType;
   points: Points;
   selectedPoint: Point | undefined;
+  placeOffers: PlaceOfferType[];
 }
 
 const defaultCustomIcon = new Icon({
@@ -24,7 +25,7 @@ const currentCustomIcon = new Icon({
 });
 
 function Map(props: MapProps):JSX.Element {
-  const {city, points, selectedPoint} = props;
+  const {city, points, selectedPoint, placeOffers} = props;
 
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
@@ -32,10 +33,10 @@ function Map(props: MapProps):JSX.Element {
   useEffect(() => {
     if(map) {
       const markerLayer = layerGroup().addTo(map);
-      points.forEach((point) => {
+      placeOffers.forEach((point) => {
         const marker = new Marker({
-          lat: point.latitude,
-          lng: point.longitude
+          lat: city.location.latitude,
+          lng: city.location.longitude
         });
 
 
@@ -55,7 +56,7 @@ function Map(props: MapProps):JSX.Element {
       };
 
     }
-  }, [map, points, selectedPoint]);
+  }, [map, points, selectedPoint, city, placeOffers]);
 
   return (
     <section className="cities__map map">

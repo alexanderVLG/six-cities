@@ -4,6 +4,7 @@ import App from './components/app/app';
 import { Hotels, CITIES, PLACES_OPTIONS} from './const';
 import { placeOffers } from './mocks/places-mocks';
 import { reviews } from './mocks/reviews-mocks';
+import { CITY } from './mocks/city';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -17,6 +18,7 @@ root.render(
       reviews={reviews}
       cities={CITIES}
       placesOptions={PLACES_OPTIONS}
+      city={CITY}
     />
   </React.StrictMode>
 );
