@@ -23,7 +23,7 @@ function Card({
   classNameCard,
   imageWidth,
   imageHeight,
-  onOfferHover
+  onOfferHover,
 }: CardProps): JSX.Element {
 
   const {title, previewImage, price, isFavorite, rating, type} = placeOffer;

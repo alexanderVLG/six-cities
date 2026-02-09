@@ -5,7 +5,7 @@ type OfferListProps = {
   placeOffer: PlaceOfferType[];
 }
 
-function OfferList({placeOffer}: OfferListProps): JSX.Element {
+function OfferList({placeOffer,}: OfferListProps): JSX.Element {
 
 
   return (

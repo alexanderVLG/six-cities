@@ -1,7 +1,8 @@
+import { useState } from 'react';
 import Header from '../../components/layout/header';
 import Map from '../../components/map/map';
 import { Helmet } from 'react-helmet-async';
-import { PlaceOfferType, Points } from '../../types';
+import { PlaceOfferType, Point, Points } from '../../types';
 import OfferList from '../../components/offer/offer-list';
 import LocationsList from '../../components/locations/locations-list';
 import PlacesSorting from '../../components/places-sorting/places-sorting';
@@ -30,6 +31,14 @@ const MainScreen = ({hotelsNumber, cities, onCityClick, currentCity, placesOptio
 
   const currentCityData = filteredOffers[0]?.city || placeOffers[0]?.city;
 
+  const [selectedPoint, setSelectedPoint] = useState<Point | undefined>(undefined);
+
+  const handleListItemHover = (listItemName: string) => {
+    const currentPoint = points.find((point) => point.title === listItemName);
+
+    setSelectedPoint(currentPoint);
+  };
+
   return(
     <div className="page page--gray page--main">
       <Helmet>
@@ -53,7 +62,7 @@ const MainScreen = ({hotelsNumber, cities, onCityClick, currentCity, placesOptio
                 points={points}
                 city={currentCityData}
                 placeOffers={filteredOffers}
-                selectedPoint={undefined}
+                selectedPoint={selectedPoint}
               />
             </div>
           </div>
