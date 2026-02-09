@@ -48,14 +48,21 @@ const MainScreen = ({hotelsNumber, cities, onCityClick, currentCity, placesOptio
 
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
-        <LocationsList cities={cities} onCityClick={onCityClick} currentCity={currentCity}/>
+        <LocationsList
+          cities={cities}
+          onCityClick={onCityClick}
+          currentCity={currentCity}
+        />
         <div className="cities">
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">{hotelsNumber} places to stay in Amsterdam</b>
               <PlacesSorting placesOptions={placesOptions} />
-              <OfferList placeOffer={placeOffers}/>
+              <OfferList
+                placeOffer={placeOffers}
+                onListItemHover={handleListItemHover}
+              />
             </section>
             <div className="cities__right-section">
               <Map

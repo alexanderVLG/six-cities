@@ -1,3 +1,4 @@
+import { MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { PlaceOfferType } from '../../types';
 import { AppRoute } from '../../const';
@@ -10,6 +11,7 @@ type CardProps = {
   imageWidth: string;
   imageHeight: string;
   onOfferHover?: (value: string) => void;
+  onListItemHover: (listItemName: string) => void;
 }
 
 const PremiumMark = (): JSX.Element => (
@@ -24,6 +26,7 @@ function Card({
   imageWidth,
   imageHeight,
   onOfferHover,
+  onListItemHover
 }: CardProps): JSX.Element {
 
   const {title, previewImage, price, isFavorite, rating, type} = placeOffer;
@@ -46,6 +49,11 @@ function Card({
     if (onOfferHover) {
       onOfferHover('');
     }
+  };
+
+  const handleListItemHover = (event: MouseEvent<HTMLElement>) => {
+    event.preventDefault();
+    onListItemHover(event.currentTarget.innerText);
   };
 
   return (
@@ -80,9 +88,7 @@ function Card({
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
-        <h2 className="place-card__name">
-          <Link to={AppRoute.OFFER}>{title}</Link>
-        </h2>
+        <h2 className="place-card__name" onMouseEnter={handleListItemHover}>{title}</h2>
         <p className="place-card__type">{type}</p>
       </div>
     </article>);

@@ -3,9 +3,10 @@ import { PlaceOfferType } from '../../types';
 
 type OfferListProps = {
   placeOffer: PlaceOfferType[];
+  onListItemHover: (listItemName: string) => void;
 }
 
-function OfferList({placeOffer,}: OfferListProps): JSX.Element {
+function OfferList({placeOffer, onListItemHover}: OfferListProps): JSX.Element {
 
 
   return (
@@ -18,6 +19,7 @@ function OfferList({placeOffer,}: OfferListProps): JSX.Element {
             classNameCard="cities"
             imageWidth='150'
             imageHeight='110'
+            onListItemHover={onListItemHover}
           />
         ))
       }
