@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {HelmetProvider} from 'react-helmet-async';
-import { PlaceOfferType, ReviewType, CityType } from '../../types';
+import { PlaceOfferType, ReviewType } from '../../types';
 import { AppRoute, AuthorizationStatus} from '../../const';
 import MainScreen from '../../pages/main-screen/main-screen';
 import FavoritesScreen from '../../pages/favorites-screen/favorites-screen';
@@ -16,11 +16,10 @@ type AppHotelsProps = {
   reviews: ReviewType[];
   cities: string[];
   placesOptions: string[];
-  city: CityType;
 }
 
-function App({hotelsNumber, placeOffers, reviews, cities, placesOptions, city}: AppHotelsProps): JSX.Element {
-  const [currentCity, setCurrentCity] = useState('Paris');
+function App({hotelsNumber, placeOffers, reviews, cities, placesOptions}: AppHotelsProps): JSX.Element {
+  const [currentCity, setCurrentCity] = useState('Amsterdam');
 
   const handleCityLinkClick = (value: string) => {
     setCurrentCity(value);
@@ -40,7 +39,6 @@ function App({hotelsNumber, placeOffers, reviews, cities, placesOptions, city}: 
                 onCityClick={handleCityLinkClick}
                 currentCity={currentCity}
                 placesOptions={placesOptions}
-                city={city}
               />
             }
           />

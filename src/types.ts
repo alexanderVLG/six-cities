@@ -1,11 +1,3 @@
-export type Point = {
-  title: string;
-  latitude: number;
-  longitude: number;
-};
-
-export type Points = Point[];
-
 export type LocationType = {
   latitude: number;
   longitude: number;
@@ -56,3 +48,8 @@ export type User = {
 export type Cities = {
   cities: string[];
 }
+
+export type Point = Pick<PlaceOfferType, 'title'> &
+  Pick<PlaceOfferType['location'], 'latitude' | 'longitude'>;
+
+export type Points = Point[];
