@@ -24,7 +24,8 @@ const MainScreen = ({hotelsNumber, cities, onCityClick, currentCity, placesOptio
   const points: Points = filteredOffers.map((offer) => ({
     title: offer.title,
     latitude: offer.location.latitude,
-    longitude: offer.location.longitude
+    longitude: offer.location.longitude,
+    zoom: offer.location.zoom
   }));
 
   const currentCityData = filteredOffers[0]?.city || placeOffers[0]?.city;

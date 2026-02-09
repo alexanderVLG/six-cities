@@ -50,6 +50,6 @@ export type Cities = {
 }
 
 export type Point = Pick<PlaceOfferType, 'title'> &
-  Pick<PlaceOfferType['location'], 'latitude' | 'longitude'>;
+  Pick<PlaceOfferType['location'], 'latitude' | 'longitude' | 'zoom'>;
 
 export type Points = Point[];
