@@ -15,7 +15,7 @@ export const placeOffers = [
     },
     location: {
       latitude: 52.367540000000005,
-      longitude: 4.883976,
+      longitude: 4.873976,
       zoom: 16
     },
     isFavorite: false,
@@ -31,14 +31,14 @@ export const placeOffers = [
     city: {
       name: 'Amsterdam',
       location: {
-        latitude: 52.37454,
+        latitude: 52.3745,
         longitude: 4.897976,
         zoom: 13
       }
     },
     location: {
       latitude: 52.361540000000005,
-      longitude: 4.883976,
+      longitude: 4.893976,
       zoom: 16
     },
     isFavorite: true,
@@ -78,13 +78,13 @@ export const placeOffers = [
       name: 'Amsterdam',
       location: {
         latitude: 52.37454,
-        longitude: 4.897976,
+        longitude: 4.867976,
         zoom: 13
       }
     },
     location: {
       latitude: 52.37854,
-      longitude: 4.894976,
+      longitude: 4.854976,
       zoom: 16
     },
     isFavorite: false,
@@ -107,7 +107,7 @@ export const placeOffers = [
     },
     location: {
       latitude: 52.36854,
-      longitude: 4.887976,
+      longitude: 4.883976,
       zoom: 16
     },
     isFavorite: true,
@@ -115,7 +115,7 @@ export const placeOffers = [
     rating: 1.4
   },
   {
-    id: '4ca1ea41-8f8b-471b-8246-87745ec252d1',
+    id: '4ca1ea41-8f8b-471b-8246-87745ec252d11',
     title: 'Beautiful & luxurious apartment at great location',
     type: 'house',
     price: 498,
@@ -124,7 +124,7 @@ export const placeOffers = [
       name: 'Paris',
       location: {
         latitude: 52.37454,
-        longitude: 4.897976,
+        longitude: 4.899976,
         zoom: 13
       }
     },
