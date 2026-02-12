@@ -35,7 +35,6 @@ function Map({city, points, selectedPoint}: MapProps):JSX.Element {
           lng: point.longitude
         });
 
-
         marker
           .setIcon(
             selectedPoint !== undefined && point.title === selectedPoint.title
@@ -43,9 +42,7 @@ function Map({city, points, selectedPoint}: MapProps):JSX.Element {
               : defaultCustomIcon
           )
           .addTo(markerLayer);
-
       });
-
 
       return () => {
         map.removeLayer(markerLayer);
