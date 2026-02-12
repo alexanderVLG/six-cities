@@ -45,7 +45,7 @@ export const offers = [{
   maxAdults: 2
 },
 {
-  id: '9c21c854-fb07-4822-ac05-cb2da82ea586',
+  id: '9c21c854-fb07-4822-ac05-cb2da82ea5868',
   title: 'Loft Studio in the Central Area',
   description: 'I am happy to welcome you to my apartment in the city center! Three words: location, cosy and chic!',
   type: 'house',
@@ -91,7 +91,7 @@ export const offers = [{
   maxAdults: 2
 },
 {
-  id: '9c21c854-fb07-4822-ac05-cb2da82ea586',
+  id: '9c21c854-fb07-4822-ac05-cb2da82ea58',
   title: 'Loft Studio in the Central Area',
   description: 'I am happy to welcome you to my apartment in the city center! Three words: location, cosy and chic!',
   type: 'house',
@@ -137,7 +137,7 @@ export const offers = [{
   maxAdults: 2
 },
 {
-  id: '9c21c854-fb07-4822-ac05-cb2da82ea586',
+  id: '9c21c854-fb07-4822-ac05-cb2da82ea58699',
   title: 'Loft Studio in the Central Area',
   description: 'I am happy to welcome you to my apartment in the city center! Three words: location, cosy and chic!',
   type: 'house',

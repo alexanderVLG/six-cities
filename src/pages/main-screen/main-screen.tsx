@@ -68,7 +68,6 @@ const MainScreen = ({hotelsNumber, cities, onCityClick, currentCity, placesOptio
               <Map
                 points={points}
                 city={currentCityData}
-                placeOffers={filteredOffers}
                 selectedPoint={selectedPoint}
               />
             </div>
