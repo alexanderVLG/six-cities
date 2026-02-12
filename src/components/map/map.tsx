@@ -23,8 +23,7 @@ const currentCustomIcon = new Icon({
   iconAnchor: [20, 40]
 });
 
-function Map(props: MapProps):JSX.Element {
-  const {city, selectedPoint, points} = props;
+function Map({city, points, selectedPoint}: MapProps):JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
   useEffect(() => {
