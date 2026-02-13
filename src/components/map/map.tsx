@@ -9,6 +9,7 @@ type MapProps = {
   city: CityType;
   selectedPoint: Point | undefined;
   points: Points;
+  onMarkerClick?: (point: Point) => void;
 }
 
 const defaultCustomIcon = new Icon({
@@ -23,7 +24,7 @@ const currentCustomIcon = new Icon({
   iconAnchor: [20, 40]
 });
 
-function Map({city, points, selectedPoint}: MapProps):JSX.Element {
+function Map({city, points, selectedPoint, onMarkerClick}: MapProps):JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
   useEffect(() => {
@@ -33,6 +34,12 @@ function Map({city, points, selectedPoint}: MapProps):JSX.Element {
         const marker = new Marker({
           lat: point.latitude,
           lng: point.longitude
+        });
+
+        marker.on('click', () => {
+          if(onMarkerClick) {
+            onMarkerClick(point);
+          }
         });
 
         marker
@@ -49,7 +56,7 @@ function Map({city, points, selectedPoint}: MapProps):JSX.Element {
       };
 
     }
-  }, [map, selectedPoint, city, points]);
+  }, [map, selectedPoint, city, points, onMarkerClick]);
 
   return (
     <section className="cities__map map">

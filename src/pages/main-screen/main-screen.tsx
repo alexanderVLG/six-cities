@@ -39,6 +39,10 @@ const MainScreen = ({hotelsNumber, cities, onCityClick, currentCity, placesOptio
     setSelectedPoint(currentPoint);
   };
 
+  const handleMarkerClick = (point: Point) => {
+    setSelectedPoint(point);
+  };
+
   return(
     <div className="page page--gray page--main">
       <Helmet>
@@ -69,6 +73,7 @@ const MainScreen = ({hotelsNumber, cities, onCityClick, currentCity, placesOptio
                 points={points}
                 city={currentCityData}
                 selectedPoint={selectedPoint}
+                onMarkerClick={handleMarkerClick}
               />
             </div>
           </div>
