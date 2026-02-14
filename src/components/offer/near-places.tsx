@@ -1,19 +1,19 @@
-import { PlaceOfferType } from '../../types';
+import { OffersListType } from '../../types';
 import Card from '../card/card';
 
 type NearPlacesProps = {
-  placeOffers: PlaceOfferType[];
+  offersList: OffersListType[];
 }
 
-const NearPlaces = ({placeOffers}: NearPlacesProps):JSX.Element => (
+const NearPlaces = ({offersList}: NearPlacesProps):JSX.Element => (
   <section className="near-places places">
     <h2 className="near-places__title">Other places in the neighbourhood</h2>
     <div className="near-places__list places__list">
-      {placeOffers.slice(0, 3).map((offer) =>
+      {offersList.slice(0, 3).map((offer) =>
         (
           <Card
             key={offer.id}
-            placeOffer={offer}
+            offersList={offersList}
             classNameCard={'near-places'}
             imageWidth='260'
             imageHeight='200'

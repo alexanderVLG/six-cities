@@ -2,6 +2,7 @@ import Header from '../../components/layout/header';
 import { Helmet } from 'react-helmet-async';
 import Reviews from '../../components/offer/reviews';
 import { ReviewType } from '../../types';
+import Map from '../../components/map/map';
 
 type OfferScreenProps = {
   reviews: ReviewType[];
@@ -112,7 +113,9 @@ function OfferScreen({reviews}: OfferScreenProps): JSX.Element {
               <Reviews reviews={reviews} />
             </div>
           </div>
-          <section className="offer__map map"></section>
+          <section className="offer__map map">
+            <Map />
+          </section>
         </section>
         <div className="container">
           {/* todo Добавить компонент ближайшие места */}

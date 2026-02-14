@@ -1,4 +1,4 @@
-export const placeOffers = [
+export const offersList = [
   {
     id: 'b831a231-b0c1-469b-b55d-389666b8736e',
     title: 'House in countryside',

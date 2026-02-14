@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
 import { Hotels, CITIES, PLACES_OPTIONS} from './const';
-import { placeOffers } from './mocks/places-mocks';
+import { offersList } from './mocks/places-mocks';
 import { reviews } from './mocks/reviews-mocks';
 
 const root = ReactDOM.createRoot(
@@ -13,7 +13,7 @@ root.render(
   <React.StrictMode>
     <App
       hotelsNumber = {Hotels.hotelsNumber}
-      placeOffers={placeOffers}
+      offersList={offersList}
       reviews={reviews}
       cities={CITIES}
       placesOptions={PLACES_OPTIONS}

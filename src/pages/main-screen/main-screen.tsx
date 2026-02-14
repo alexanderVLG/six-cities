@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Header from '../../components/layout/header';
 import Map from '../../components/map/map';
 import { Helmet } from 'react-helmet-async';
-import { PlaceOfferType, Point, Points } from '../../types';
+import { OffersListType, Point, Points } from '../../types';
 import OfferList from '../../components/offer/offer-list';
 import LocationsList from '../../components/locations/locations-list';
 import PlacesSorting from '../../components/places-sorting/places-sorting';
@@ -10,15 +10,15 @@ import PlacesSorting from '../../components/places-sorting/places-sorting';
 
 type MainPageProps = {
   hotelsNumber: number;
-  placeOffers: PlaceOfferType[];
+  offersList: OffersListType[];
   cities: string[];
   onCityClick: (value: string) => void;
   currentCity: string;
   placesOptions: string[];
 }
 
-const MainScreen = ({hotelsNumber, cities, onCityClick, currentCity, placesOptions, placeOffers}: MainPageProps): JSX.Element => {
-  const filteredOffers = placeOffers.filter(
+const MainScreen = ({hotelsNumber, cities, onCityClick, currentCity, placesOptions, offersList}: MainPageProps): JSX.Element => {
+  const filteredOffers = offersList.filter(
     (offer) => offer.city.name === currentCity
   );
 
@@ -29,7 +29,7 @@ const MainScreen = ({hotelsNumber, cities, onCityClick, currentCity, placesOptio
     zoom: offer.location.zoom
   }));
 
-  const currentCityData = filteredOffers[0]?.city || placeOffers[0]?.city;
+  const currentCityData = filteredOffers[0]?.city || offersList[0]?.city;
 
   const [selectedPoint, setSelectedPoint] = useState<Point | undefined>(undefined);
 
@@ -64,7 +64,7 @@ const MainScreen = ({hotelsNumber, cities, onCityClick, currentCity, placesOptio
               <b className="places__found">{hotelsNumber} places to stay in Amsterdam</b>
               <PlacesSorting placesOptions={placesOptions} />
               <OfferList
-                placeOffer={placeOffers}
+                offersList={offersList}
                 onListItemHover={handleListItemHover}
               />
             </section>

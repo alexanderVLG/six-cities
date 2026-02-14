@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {HelmetProvider} from 'react-helmet-async';
-import { PlaceOfferType, ReviewType } from '../../types';
+import { OffersListType, OfferType, ReviewType } from '../../types';
 import { AppRoute, AuthorizationStatus} from '../../const';
 import MainScreen from '../../pages/main-screen/main-screen';
 import FavoritesScreen from '../../pages/favorites-screen/favorites-screen';
@@ -12,13 +12,14 @@ import PrivateRoute from '../private-route/private-route';
 
 type AppHotelsProps = {
   hotelsNumber: number;
-  placeOffers: PlaceOfferType[];
+  offersList: OffersListType[];
+  offers: OfferType[];
   reviews: ReviewType[];
   cities: string[];
   placesOptions: string[];
 }
 
-function App({hotelsNumber, placeOffers, reviews, cities, placesOptions}: AppHotelsProps): JSX.Element {
+function App({hotelsNumber, offers, offersList, reviews, cities, placesOptions}: AppHotelsProps): JSX.Element {
   const [currentCity, setCurrentCity] = useState('Amsterdam');
 
   const handleCityLinkClick = (value: string) => {
@@ -34,7 +35,7 @@ function App({hotelsNumber, placeOffers, reviews, cities, placesOptions}: AppHot
             element={
               <MainScreen
                 hotelsNumber={hotelsNumber}
-                placeOffers={placeOffers}
+                offersList={offersList}
                 cities={cities}
                 onCityClick={handleCityLinkClick}
                 currentCity={currentCity}
@@ -48,7 +49,7 @@ function App({hotelsNumber, placeOffers, reviews, cities, placesOptions}: AppHot
               <PrivateRoute
                 authorizationStatus={AuthorizationStatus.Auth}
               >
-                <FavoritesScreen placeOffers={placeOffers} />
+                <FavoritesScreen offers={offers} />
               </PrivateRoute>
             }
           />

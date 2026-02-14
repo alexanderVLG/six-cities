@@ -1,12 +1,12 @@
 import { MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { PlaceOfferType } from '../../types';
+import { OfferType } from '../../types';
 import { AppRoute } from '../../const';
 import { ratingInProcent } from '../../utils';
 
 
 type CardProps = {
-  placeOffer: PlaceOfferType;
+  offer: OfferType;
   classNameCard: string;
   imageWidth: string;
   imageHeight: string;
@@ -21,7 +21,7 @@ const PremiumMark = (): JSX.Element => (
 );
 
 function Card({
-  placeOffer,
+  offer,
   classNameCard,
   imageWidth,
   imageHeight,
@@ -29,7 +29,7 @@ function Card({
   onListItemHover
 }: CardProps): JSX.Element {
 
-  const {title, previewImage, price, isFavorite, rating, type} = placeOffer;
+  const {title, previewImage, price, isFavorite, rating, type} = offer;
   const favoriteClass = isFavorite
     ? 'place-card__bookmark-button place-card__bookmark-button--active button'
     : 'place-card__bookmark-button button';
@@ -60,7 +60,7 @@ function Card({
     <article
       className={CardStyle.FOR_ARTICLE}
       onMouseLeave={() => handleCardMouseLeave()}
-      onMouseEnter={() => handleCardMouseEnter(placeOffer.id)}
+      onMouseEnter={() => handleCardMouseEnter(offer.id)}
     >
       {isFavorite ? <PremiumMark /> : ''}
 

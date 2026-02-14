@@ -9,20 +9,20 @@ export type CityType = {
   location: LocationType;
 }
 
-export type PlaceOfferType = {
+export type OffersListType = {
   id: string;
   title: string;
   type: string;
   price: number;
-  previewImage?: string;
   city: CityType;
   location: LocationType;
   isFavorite: boolean;
   isPremium: boolean;
   rating: number;
+  previewImage?: string;
 }
 
-export type OfferType = PlaceOfferType & {
+export type OfferType = OffersListType & {
   description: string;
   bedrooms: number;
   goods: string[];
@@ -49,7 +49,7 @@ export type Cities = {
   cities: string[];
 }
 
-export type Point = Pick<PlaceOfferType, 'title'> &
-  Pick<PlaceOfferType['location'], 'latitude' | 'longitude' | 'zoom'>;
+export type Point = Pick<OffersListType, 'title'> &
+  Pick<OffersListType['location'], 'latitude' | 'longitude' | 'zoom'>;
 
 export type Points = Point[];

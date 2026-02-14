@@ -1,17 +1,17 @@
 import { Helmet } from 'react-helmet-async';
 import {nanoid} from '@reduxjs/toolkit';
-import { PlaceOfferType } from '../../types';
+import { OfferType } from '../../types';
 import Footer from '../../components/layout/footer';
 import Header from '../../components/layout/header';
 import Card from '../../components/card/card';
 import { CITIES } from '../../const';
 
 type FavoritesProps = {
-  placeOffers: PlaceOfferType[];
+  offers: OfferType[];
 }
 
 type FavoritesItemProps = {
-  cityOffers: PlaceOfferType[];
+  cityOffers: OfferType[];
 }
 
 const FavoritesItem = ({cityOffers}: FavoritesItemProps): JSX.Element => (
@@ -29,7 +29,7 @@ const FavoritesItem = ({cityOffers}: FavoritesItemProps): JSX.Element => (
           (
             <Card
               key={offer.id}
-              placeOffer={offer}
+              offer={offer}
               classNameCard='favorites'
               imageWidth='150'
               imageHeight='110'
@@ -40,9 +40,9 @@ const FavoritesItem = ({cityOffers}: FavoritesItemProps): JSX.Element => (
   </li>
 );
 
-const FavoriteList = ({placeOffers}: FavoritesProps): JSX.Element => {
+const FavoriteList = ({offers}: FavoritesProps): JSX.Element => {
 
-  const filteredByCities = CITIES.map((city) => placeOffers.filter((offer) => offer && offer.city.name === city && offer.isFavorite));
+  const filteredByCities = CITIES.map((city) => offers.filter((offer) => offer && offer.city.name === city && offer.isFavorite));
   const offersCities = filteredByCities.filter((list) => list.length > 0);
 
   return (
@@ -53,7 +53,7 @@ const FavoriteList = ({placeOffers}: FavoritesProps): JSX.Element => {
 };
 
 
-function FavoritesScreen({placeOffers}: FavoritesProps):JSX.Element {
+function FavoritesScreen({offers}: FavoritesProps):JSX.Element {
   return(
     <div className="page">
       <Helmet>
@@ -66,7 +66,7 @@ function FavoritesScreen({placeOffers}: FavoritesProps):JSX.Element {
           <section className="favorites">
             <h1 className="favorites__title">Saved listing</h1>
             <ul className="favorites__list">
-              <FavoriteList placeOffers={placeOffers} />
+              <FavoriteList offers={offers} />
             </ul>
           </section>
         </div>
