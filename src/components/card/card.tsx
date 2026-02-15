@@ -1,12 +1,12 @@
 import { MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { OfferType } from '../../types';
+import { OffersListType } from '../../types';
 import { AppRoute } from '../../const';
 import { ratingInProcent } from '../../utils';
 
 
 type CardProps = {
-  offer: OfferType;
+  offer: OffersListType;
   classNameCard: string;
   imageWidth: string;
   imageHeight: string;

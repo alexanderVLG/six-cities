@@ -13,10 +13,11 @@ const NearPlaces = ({offersList}: NearPlacesProps):JSX.Element => (
         (
           <Card
             key={offer.id}
-            offersList={offersList}
+            offer={offer}
             classNameCard={'near-places'}
             imageWidth='260'
             imageHeight='200'
+            onListItemHover={() => {}}
           />))}
     </div>
   </section>
