@@ -113,9 +113,7 @@ function OfferScreen({reviews}: OfferScreenProps): JSX.Element {
               <Reviews reviews={reviews} />
             </div>
           </div>
-          <section className="offer__map map">
-            <Map />
-          </section>
+          {/* <Map /> */}
         </section>
         <div className="container">
           {/* todo Добавить компонент ближайшие места */}
