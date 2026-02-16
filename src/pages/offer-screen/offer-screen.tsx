@@ -1,16 +1,38 @@
+import { useState } from 'react';
 import Header from '../../components/layout/header';
 import { Helmet } from 'react-helmet-async';
 import Reviews from '../../components/offer/reviews';
-import { ReviewType } from '../../types';
+import { ReviewType, NearOffersType, Point, Points } from '../../types';
 import Map from '../../components/map/map';
 
 type OfferScreenProps = {
   reviews: ReviewType[];
+  nearOffers: NearOffersType[];
+  currentCity: string;
 }
 
 const offerInsideList = ['Wi-fi', 'Towels', 'Heating', 'Dishwasher', 'Kitchen', 'Soap'];
 
-function OfferScreen({reviews}: OfferScreenProps): JSX.Element {
+function OfferScreen({reviews, nearOffers, currentCity}: OfferScreenProps): JSX.Element {
+  const filteredOffers = nearOffers.filter(
+    (offer) => offer.city.name === currentCity
+  );
+
+  const points: Points = filteredOffers.map((offer) => ({
+    title: offer.title,
+    latitude: offer.location.latitude,
+    longitude: offer.location.longitude,
+    zoom: offer.location.zoom
+  }));
+
+  const currentCityData = filteredOffers[0]?.city || nearOffers[0]?.city;
+
+  const [selectedPoint, setSelectedPoint] = useState<Point | undefined>(undefined);
+
+  const handleMarkerClick = (point: Point) => {
+    setSelectedPoint(point);
+  };
+
   return(
     <div className="page">
       <Helmet>
@@ -113,7 +135,12 @@ function OfferScreen({reviews}: OfferScreenProps): JSX.Element {
               <Reviews reviews={reviews} />
             </div>
           </div>
-          {/* <Map /> */}
+          <Map
+            points={points}
+            city={currentCityData}
+            selectedPoint={selectedPoint}
+            onMarkerClick={handleMarkerClick}
+          />
         </section>
         <div className="container">
           {/* todo Добавить компонент ближайшие места */}

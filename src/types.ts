@@ -22,7 +22,7 @@ export type OffersListType = {
   previewImage?: string;
 }
 
-export type OfferType = OffersListType & {
+export type NearOffersType = OffersListType & {
   description: string;
   bedrooms: number;
   goods: string[];
