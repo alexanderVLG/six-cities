@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import Reviews from '../../components/offer/reviews';
 import { ReviewType, NearOffersType, Point, Points } from '../../types';
 import Map from '../../components/map/map';
+import NearPlaces from '../../components/offer/near-places';
 
 type OfferScreenProps = {
   reviews: ReviewType[];
@@ -136,6 +137,7 @@ function OfferScreen({reviews, nearOffers, currentCity}: OfferScreenProps): JSX.
             </div>
           </div>
           <Map
+            className="offer__map"
             points={points}
             city={currentCityData}
             selectedPoint={selectedPoint}
@@ -143,7 +145,7 @@ function OfferScreen({reviews, nearOffers, currentCity}: OfferScreenProps): JSX.
           />
         </section>
         <div className="container">
-          {/* todo Добавить компонент ближайшие места */}
+          <NearPlaces />
         </div>
       </main>
     </ div>

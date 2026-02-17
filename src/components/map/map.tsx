@@ -6,6 +6,7 @@ import 'leaflet/dist/leaflet.css';
 import { useEffect, useRef } from 'react';
 
 type MapProps = {
+  className?: string;
   city: CityType;
   selectedPoint: Point | undefined;
   points: Points;
@@ -24,7 +25,8 @@ const currentCustomIcon = new Icon({
   iconAnchor: [20, 40]
 });
 
-function Map({city, points, selectedPoint, onMarkerClick}: MapProps):JSX.Element {
+function Map({city, points, selectedPoint, onMarkerClick, className}: MapProps):JSX.Element {
+  const offerClass = className ? 'offer__map map' : 'cities__map map';
   const mapRef = useRef(null);
   const map = useMap({mapRef, city});
   useEffect(() => {
@@ -59,8 +61,8 @@ function Map({city, points, selectedPoint, onMarkerClick}: MapProps):JSX.Element
   }, [map, selectedPoint, points, onMarkerClick]);
 
   return (
-    <section className="cities__map map">
-      <div style={{height: '500px'}} ref={mapRef}></div>
+    <section className={offerClass}>
+      <div style={{height: '580px'}} ref={mapRef}></div>
     </section>
   );
 }
