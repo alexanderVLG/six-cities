@@ -5,6 +5,7 @@ import Reviews from '../../components/offer/reviews';
 import { ReviewType, NearOffersType, Point, Points } from '../../types';
 import Map from '../../components/map/map';
 import NearPlaces from '../../components/offer/near-places';
+import { offersList } from '../../mocks/offers-list-mocks';
 
 type OfferScreenProps = {
   reviews: ReviewType[];
@@ -145,7 +146,7 @@ function OfferScreen({reviews, nearOffers, currentCity}: OfferScreenProps): JSX.
           />
         </section>
         <div className="container">
-          <NearPlaces />
+          <NearPlaces offersList={offersList} />
         </div>
       </main>
     </ div>
