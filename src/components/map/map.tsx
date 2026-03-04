@@ -1,5 +1,5 @@
 import { Icon, Marker, layerGroup } from 'leaflet';
-import { CityType, Point, Points} from '../../types';
+import { CityType, Point, Points} from '../../types/types';
 import useMap from '../../hooks/use-map';
 import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT } from '../../const';
 import 'leaflet/dist/leaflet.css';

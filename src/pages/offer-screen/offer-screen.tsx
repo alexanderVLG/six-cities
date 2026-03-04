@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Header from '../../components/layout/header';
 import { Helmet } from 'react-helmet-async';
 import Reviews from '../../components/offer/reviews';
-import { ReviewType, NearOffersType, Point, Points } from '../../types';
+import { ReviewType, NearOffersType, Point, Points } from '../../types/types';
 import Map from '../../components/map/map';
 import NearPlaces from '../../components/offer/near-places';
 import { offersList } from '../../mocks/offers-list-mocks';

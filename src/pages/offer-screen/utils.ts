@@ -1,5 +1,5 @@
 import { offersList } from '../../mocks/offers-list-mocks';
-import { OffersListType } from '../../types';
+import { OffersListType } from '../../types/types';
 
 const MAX_NEAR_OFFERS = 3;
 

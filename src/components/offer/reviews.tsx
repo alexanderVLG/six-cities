@@ -1,5 +1,5 @@
 import NewReview from './new-review';
-import { ReviewType } from '../../types';
+import { ReviewType } from '../../types/types';
 import { formatDate } from '../../utils';
 
 type ReviewProps = {

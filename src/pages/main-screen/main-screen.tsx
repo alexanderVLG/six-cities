@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Header from '../../components/layout/header';
 import Map from '../../components/map/map';
 import { Helmet } from 'react-helmet-async';
-import { OffersListType, Point, Points } from '../../types';
+import { OffersListType, Point, Points } from '../../types/types';
 import OfferList from '../../components/offer/offer-list';
 import LocationsList from '../../components/locations/locations-list';
 import PlacesSorting from '../../components/places-sorting/places-sorting';

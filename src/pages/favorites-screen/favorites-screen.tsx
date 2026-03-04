@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import {nanoid} from '@reduxjs/toolkit';
-import { OffersListType } from '../../types';
+import { OffersListType } from '../../types/types';
 import Footer from '../../components/layout/footer';
 import Header from '../../components/layout/header';
 import Card from '../../components/card/card';

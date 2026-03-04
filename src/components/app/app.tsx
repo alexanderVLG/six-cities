@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {HelmetProvider} from 'react-helmet-async';
-import { OffersListType, ReviewType, NearOffersType } from '../../types';
+import { OffersListType, ReviewType, NearOffersType } from '../../types/types';
 import { AppRoute, AuthorizationStatus} from '../../const';
 import MainScreen from '../../pages/main-screen/main-screen';
 import FavoritesScreen from '../../pages/favorites-screen/favorites-screen';
