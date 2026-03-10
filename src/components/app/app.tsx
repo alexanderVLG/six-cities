@@ -1,8 +1,10 @@
-import { useState } from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {HelmetProvider} from 'react-helmet-async';
 import { OffersListType, ReviewType, NearOffersType } from '../../types/types';
 import { AppRoute, AuthorizationStatus} from '../../const';
+import { useAppSelector } from '../../hooks/use-app-selector';
+import { useAppDispatch } from '../../hooks/use-app-dispatch';
+import { changeCity } from '../../store/action';
 import MainScreen from '../../pages/main-screen/main-screen';
 import FavoritesScreen from '../../pages/favorites-screen/favorites-screen';
 import LoginScreen from '../../pages/login-screen/login-screen';
@@ -20,10 +22,11 @@ type AppHotelsProps = {
 }
 
 function App({hotelsNumber, offersList, reviews, cities, placesOptions, nearOffers}: AppHotelsProps): JSX.Element {
-  const [currentCity, setCurrentCity] = useState('Amsterdam');
+  const city = useAppSelector((state) => state.city);
+  const dispatch = useAppDispatch();
 
   const handleCityLinkClick = (value: string) => {
-    setCurrentCity(value);
+    dispatch(changeCity(value));
   };
 
   return (
@@ -38,7 +41,7 @@ function App({hotelsNumber, offersList, reviews, cities, placesOptions, nearOffe
                 offersList={offersList}
                 cities={cities}
                 onCityClick={handleCityLinkClick}
-                currentCity={currentCity}
+                currentCity={city}
                 placesOptions={placesOptions}
               />
             }
@@ -63,7 +66,7 @@ function App({hotelsNumber, offersList, reviews, cities, placesOptions, nearOffe
               <OfferScreen
                 reviews={reviews}
                 nearOffers={nearOffers}
-                currentCity={currentCity}
+                currentCity={city}
               />
             }
           />
