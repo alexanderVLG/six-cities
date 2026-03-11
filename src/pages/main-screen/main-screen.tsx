@@ -64,7 +64,7 @@ const MainScreen = ({hotelsNumber, cities, onCityClick, currentCity, placesOptio
               <b className="places__found">{hotelsNumber} places to stay in Amsterdam</b>
               <PlacesSorting placesOptions={placesOptions} />
               <OfferList
-                offersList={offersList}
+                filteredOffers={filteredOffers}
                 onListItemHover={handleListItemHover}
               />
             </section>

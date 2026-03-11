@@ -2,17 +2,17 @@ import Card from '../card/card';
 import { OffersListType } from '../../types/types';
 
 type OfferListProps = {
-  offersList: OffersListType[];
+  filteredOffers: OffersListType[];
   onListItemHover: (listItemName: string) => void;
 }
 
-function OfferList({offersList, onListItemHover}: OfferListProps): JSX.Element {
+function OfferList({filteredOffers, onListItemHover}: OfferListProps): JSX.Element {
 
 
   return (
     <div className="cities__places-list places__list tabs__content">
       {
-        offersList.map((item) => (
+        filteredOffers.map((item) => (
           <Card
             key={item.id}
             offer={item}
