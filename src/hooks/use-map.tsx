@@ -11,7 +11,6 @@ type UseMapProps = {
 function useMap({mapRef, city}: UseMapProps): Map | null {
   const [map, setMap] = useState<Map | null>(null);
   const isRenderedRef = useRef<boolean>(false);
-
   useEffect(() => {
     if(mapRef.current !== null && !isRenderedRef.current) {
       const instance = new Map(mapRef.current, {
@@ -21,7 +20,6 @@ function useMap({mapRef, city}: UseMapProps): Map | null {
         },
         zoom: city.location.zoom
       });
-
       const layer = new TileLayer(TILE_LAYER_URL_PATTERN, {attribution: TILE_LAYER_ATTRIBUTION}
       );
 
@@ -32,7 +30,6 @@ function useMap({mapRef, city}: UseMapProps): Map | null {
     }
 
   }, [mapRef, city]);
-
   return map;
 }
 

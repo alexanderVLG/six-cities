@@ -31,6 +31,7 @@ function Map({city, points, selectedPoint, onMarkerClick, className}: MapProps):
   const map = useMap({mapRef, city});
   useEffect(() => {
     if(map) {
+
       const markerLayer = layerGroup().addTo(map);
       points.forEach((point) => {
         const marker = new Marker({

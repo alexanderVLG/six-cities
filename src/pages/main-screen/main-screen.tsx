@@ -9,7 +9,6 @@ import PlacesSorting from '../../components/places-sorting/places-sorting';
 
 
 type MainPageProps = {
-  hotelsNumber: number;
   offersList: OffersListType[];
   cities: string[];
   onCityClick: (value: string) => void;
@@ -17,7 +16,7 @@ type MainPageProps = {
   placesOptions: string[];
 }
 
-const MainScreen = ({hotelsNumber, cities, onCityClick, currentCity, placesOptions, offersList}: MainPageProps): JSX.Element => {
+const MainScreen = ({ cities, onCityClick, currentCity, placesOptions, offersList}: MainPageProps): JSX.Element => {
   const filteredOffers = offersList.filter(
     (offer) => offer.city.name === currentCity
   );
@@ -70,6 +69,7 @@ const MainScreen = ({hotelsNumber, cities, onCityClick, currentCity, placesOptio
             </section>
             <div className="cities__right-section">
               <Map
+                key={currentCityData.name}
                 points={points}
                 city={currentCityData}
                 selectedPoint={selectedPoint}
