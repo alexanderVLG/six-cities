@@ -14,9 +14,10 @@ type MainPageProps = {
   onCityClick: (value: string) => void;
   currentCity: string;
   placesOptions: string[];
+  placesListClass: string;
 }
 
-const MainScreen = ({ cities, onCityClick, currentCity, placesOptions, offersList}: MainPageProps): JSX.Element => {
+const MainScreen = ({ cities, onCityClick, currentCity, placesOptions, offersList, placesListClass}: MainPageProps): JSX.Element => {
   const filteredOffers = offersList.filter(
     (offer) => offer.city.name === currentCity
   );
@@ -61,7 +62,10 @@ const MainScreen = ({ cities, onCityClick, currentCity, placesOptions, offersLis
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">{filteredOffers.length} places to stay in {currentCity}</b>
-              <PlacesSorting placesOptions={placesOptions} />
+              <PlacesSorting
+                placesOptions={placesOptions}
+                placesListClass={placesListClass}
+              />
               <OfferList
                 filteredOffers={filteredOffers}
                 onListItemHover={handleListItemHover}

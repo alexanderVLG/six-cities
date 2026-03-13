@@ -4,7 +4,7 @@ import { OffersListType, ReviewType, NearOffersType } from '../../types/types';
 import { AppRoute, AuthorizationStatus} from '../../const';
 import { useAppSelector } from '../../hooks/use-app-selector';
 import { useAppDispatch } from '../../hooks/use-app-dispatch';
-import { changeCity } from '../../store/action';
+import { changeCity, changeToggle } from '../../store/action';
 import MainScreen from '../../pages/main-screen/main-screen';
 import FavoritesScreen from '../../pages/favorites-screen/favorites-screen';
 import LoginScreen from '../../pages/login-screen/login-screen';
@@ -18,14 +18,20 @@ type AppHotelsProps = {
   nearOffers: NearOffersType[];
   cities: string[];
   placesOptions: string[];
+  placesListClass: string;
 }
 
-function App({ offersList, reviews, cities, placesOptions, nearOffers}: AppHotelsProps): JSX.Element {
+function App({ offersList, reviews, cities, placesOptions, nearOffers, placesListClass}: AppHotelsProps): JSX.Element {
   const city = useAppSelector((state) => state.city);
+  const toggle = useAppSelector((state) => state.toggle);
   const dispatch = useAppDispatch();
 
   const handleCityLinkClick = (value: string) => {
     dispatch(changeCity(value));
+  };
+
+  const handleSortingListClick = (value: boolean) => {
+    dispatch(changeToggle(value));
   };
 
   return (
@@ -40,7 +46,9 @@ function App({ offersList, reviews, cities, placesOptions, nearOffers}: AppHotel
                 cities={cities}
                 onCityClick={handleCityLinkClick}
                 currentCity={city}
+                onSortingClick={handleSortingListClick}
                 placesOptions={placesOptions}
+                placesListClass={placesListClass}
               />
             }
           />

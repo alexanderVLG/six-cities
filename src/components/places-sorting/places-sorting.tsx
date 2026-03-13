@@ -1,5 +1,6 @@
 type OptionsProps = {
   placesOptions: string[];
+  placesListClass: string;
 }
 
 type OptionProps = {
@@ -17,19 +18,22 @@ const PlacesOptions = ({option}: OptionProps): JSX.Element => {
 };
 
 
-const PlacesSorting = ({placesOptions}: OptionsProps):JSX.Element => (
-  <form className="places__sorting" action="#" method="get">
-    <span className="places__sorting-caption">Sort by </span>
-    <span className="places__sorting-type" tabIndex={0}>
+const PlacesSorting = ({placesOptions, placesListClass}: OptionsProps):JSX.Element => {
+  placesListClass = 'places__options places__options--custom places__options--opened';
+  return (
+    <form className="places__sorting" action="#" method="get">
+      <span className="places__sorting-caption">Sort by </span>
+      <span className="places__sorting-type" tabIndex={0}>
                   Popular
-      <svg className="places__sorting-arrow" width="7" height="4">
-        <use xlinkHref="#icon-arrow-select"></use>
-      </svg>
-    </span>
-    <ul className="places__options places__options--custom places__options--opened">
-      {placesOptions.map((option) => <PlacesOptions key={option} option={option} />)}
-    </ul>
-  </form>
-);
+        <svg className="places__sorting-arrow" width="7" height="4">
+          <use xlinkHref="#icon-arrow-select"></use>
+        </svg>
+      </span>
+      <ul className={placesListClass}>
+        {placesOptions.map((option) => <PlacesOptions key={option} option={option} />)}
+      </ul>
+    </form>
+  );
+};
 
 export default PlacesSorting;
