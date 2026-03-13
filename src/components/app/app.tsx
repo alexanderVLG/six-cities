@@ -13,7 +13,6 @@ import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import PrivateRoute from '../private-route/private-route';
 
 type AppHotelsProps = {
-  hotelsNumber: number;
   offersList: OffersListType[];
   reviews: ReviewType[];
   nearOffers: NearOffersType[];
@@ -21,7 +20,7 @@ type AppHotelsProps = {
   placesOptions: string[];
 }
 
-function App({hotelsNumber, offersList, reviews, cities, placesOptions, nearOffers}: AppHotelsProps): JSX.Element {
+function App({ offersList, reviews, cities, placesOptions, nearOffers}: AppHotelsProps): JSX.Element {
   const city = useAppSelector((state) => state.city);
   const dispatch = useAppDispatch();
 
@@ -37,7 +36,6 @@ function App({hotelsNumber, offersList, reviews, cities, placesOptions, nearOffe
             path={AppRoute.MAIN}
             element={
               <MainScreen
-                hotelsNumber={hotelsNumber}
                 offersList={offersList}
                 cities={cities}
                 onCityClick={handleCityLinkClick}
