@@ -1,6 +1,5 @@
 type OptionsProps = {
   placesOptions: string[];
-  placesListClass: string;
   toggle: boolean;
   onSortingClick: (value: boolean) => void;
 }
@@ -20,9 +19,9 @@ const PlacesOptions = ({option}: OptionProps): JSX.Element => {
 };
 
 
-const PlacesSorting = ({placesOptions, placesListClass, toggle, onSortingClick}: OptionsProps):JSX.Element => {
+const PlacesSorting = ({placesOptions, toggle, onSortingClick}: OptionsProps):JSX.Element => {
 
-  placesListClass = toggle
+  const placesListClass = toggle
     ? 'places__options places__options--custom places__options--opened'
     : 'places__options places__options--custom';
   return (

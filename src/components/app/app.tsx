@@ -18,10 +18,9 @@ type AppHotelsProps = {
   nearOffers: NearOffersType[];
   cities: string[];
   placesOptions: string[];
-  placesListClass: string;
 }
 
-function App({ offersList, reviews, cities, placesOptions, nearOffers, placesListClass}: AppHotelsProps): JSX.Element {
+function App({ offersList, reviews, cities, placesOptions, nearOffers}: AppHotelsProps): JSX.Element {
   const city = useAppSelector((state) => state.city);
   const toggle = useAppSelector((state) => state.toggle);
   const dispatch = useAppDispatch();
@@ -49,7 +48,6 @@ function App({ offersList, reviews, cities, placesOptions, nearOffers, placesLis
                 toggle={toggle}
                 onSortingClick={handleSortingListClick}
                 placesOptions={placesOptions}
-                placesListClass={placesListClass}
               />
             }
           />
