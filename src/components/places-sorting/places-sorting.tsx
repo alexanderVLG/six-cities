@@ -23,7 +23,7 @@ const PlacesOptions = ({option}: OptionProps): JSX.Element => {
 const PlacesSorting = ({placesOptions}: OptionsProps):JSX.Element => {
   const toggle = useAppSelector((state) => state.toggle);
   const dispatch = useAppDispatch();
-  const handleSortingListClick = (value: boolean) => {
+  const onSortingListClick = (value: boolean) => {
     dispatch(changeToggle(value));
   };
   const placesListClass = toggle
@@ -32,7 +32,7 @@ const PlacesSorting = ({placesOptions}: OptionsProps):JSX.Element => {
   return (
     <form className="places__sorting" action="#" method="get">
       <span className="places__sorting-caption">Sort by </span>
-      <span className="places__sorting-type" tabIndex={0} onClick={() => handleSortingListClick(!toggle)}>
+      <span className="places__sorting-type" tabIndex={0} onClick={() => onSortingListClick(!toggle)}>
                   Popular
         <svg className="places__sorting-arrow" width="7" height="4">
           <use xlinkHref="#icon-arrow-select"></use>
