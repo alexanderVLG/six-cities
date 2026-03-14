@@ -4,7 +4,7 @@ import { OffersListType, ReviewType, NearOffersType } from '../../types/types';
 import { AppRoute, AuthorizationStatus} from '../../const';
 import { useAppSelector } from '../../hooks/use-app-selector';
 import { useAppDispatch } from '../../hooks/use-app-dispatch';
-import { changeCity, changeToggle } from '../../store/action';
+import { changeCity } from '../../store/action';
 import MainScreen from '../../pages/main-screen/main-screen';
 import FavoritesScreen from '../../pages/favorites-screen/favorites-screen';
 import LoginScreen from '../../pages/login-screen/login-screen';
@@ -28,10 +28,6 @@ function App({ offersList, reviews, cities, placesOptions, nearOffers}: AppHotel
     dispatch(changeCity(value));
   };
 
-  const handleSortingListClick = (value: boolean) => {
-    dispatch(changeToggle(value));
-  };
-
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -44,7 +40,6 @@ function App({ offersList, reviews, cities, placesOptions, nearOffers}: AppHotel
                 cities={cities}
                 onCityClick={handleCityLinkClick}
                 currentCity={city}
-                onSortingClick={handleSortingListClick}
                 placesOptions={placesOptions}
               />
             }

@@ -1,7 +1,8 @@
 import { useAppSelector } from '../../hooks/use-app-selector';
+import { useAppDispatch } from '../../hooks/use-app-dispatch';
+import { changeToggle } from '../../store/action';
 type OptionsProps = {
   placesOptions: string[];
-  onSortingClick: (value: boolean) => void;
 }
 
 type OptionProps = {
@@ -19,15 +20,19 @@ const PlacesOptions = ({option}: OptionProps): JSX.Element => {
 };
 
 
-const PlacesSorting = ({placesOptions, onSortingClick}: OptionsProps):JSX.Element => {
+const PlacesSorting = ({placesOptions}: OptionsProps):JSX.Element => {
   const toggle = useAppSelector((state) => state.toggle);
+  const dispatch = useAppDispatch();
+  const handleSortingListClick = (value: boolean) => {
+    dispatch(changeToggle(value));
+  };
   const placesListClass = toggle
     ? 'places__options places__options--custom places__options--opened'
     : 'places__options places__options--custom';
   return (
     <form className="places__sorting" action="#" method="get">
       <span className="places__sorting-caption">Sort by </span>
-      <span className="places__sorting-type" tabIndex={0} onClick={() => onSortingClick(!toggle)}>
+      <span className="places__sorting-type" tabIndex={0} onClick={() => handleSortingListClick(!toggle)}>
                   Popular
         <svg className="places__sorting-arrow" width="7" height="4">
           <use xlinkHref="#icon-arrow-select"></use>
