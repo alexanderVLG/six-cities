@@ -22,7 +22,6 @@ type AppHotelsProps = {
 
 function App({ offersList, reviews, cities, placesOptions, nearOffers}: AppHotelsProps): JSX.Element {
   const city = useAppSelector((state) => state.city);
-  const toggle = useAppSelector((state) => state.toggle);
   const dispatch = useAppDispatch();
 
   const handleCityLinkClick = (value: string) => {
@@ -45,7 +44,6 @@ function App({ offersList, reviews, cities, placesOptions, nearOffers}: AppHotel
                 cities={cities}
                 onCityClick={handleCityLinkClick}
                 currentCity={city}
-                toggle={toggle}
                 onSortingClick={handleSortingListClick}
                 placesOptions={placesOptions}
               />

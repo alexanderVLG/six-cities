@@ -1,6 +1,6 @@
+import { useAppSelector } from '../../hooks/use-app-selector';
 type OptionsProps = {
   placesOptions: string[];
-  toggle: boolean;
   onSortingClick: (value: boolean) => void;
 }
 
@@ -19,8 +19,8 @@ const PlacesOptions = ({option}: OptionProps): JSX.Element => {
 };
 
 
-const PlacesSorting = ({placesOptions, toggle, onSortingClick}: OptionsProps):JSX.Element => {
-
+const PlacesSorting = ({placesOptions, onSortingClick}: OptionsProps):JSX.Element => {
+  const toggle = useAppSelector((state) => state.toggle);
   const placesListClass = toggle
     ? 'places__options places__options--custom places__options--opened'
     : 'places__options places__options--custom';
