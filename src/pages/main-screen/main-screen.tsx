@@ -15,9 +15,11 @@ type MainPageProps = {
   currentCity: string;
   placesOptions: string[];
   placesListClass: string;
+  toggle: boolean;
+  onSortingClick: (value: boolean) => void;
 }
 
-const MainScreen = ({ cities, onCityClick, currentCity, placesOptions, offersList, placesListClass}: MainPageProps): JSX.Element => {
+const MainScreen = ({ cities, onCityClick, currentCity, placesOptions, offersList, placesListClass, toggle, onSortingClick}: MainPageProps): JSX.Element => {
   const filteredOffers = offersList.filter(
     (offer) => offer.city.name === currentCity
   );
@@ -65,6 +67,8 @@ const MainScreen = ({ cities, onCityClick, currentCity, placesOptions, offersLis
               <PlacesSorting
                 placesOptions={placesOptions}
                 placesListClass={placesListClass}
+                toggle={toggle}
+                onSortingClick={onSortingClick}
               />
               <OfferList
                 filteredOffers={filteredOffers}

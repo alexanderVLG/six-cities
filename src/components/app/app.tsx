@@ -46,6 +46,7 @@ function App({ offersList, reviews, cities, placesOptions, nearOffers, placesLis
                 cities={cities}
                 onCityClick={handleCityLinkClick}
                 currentCity={city}
+                toggle={toggle}
                 onSortingClick={handleSortingListClick}
                 placesOptions={placesOptions}
                 placesListClass={placesListClass}
