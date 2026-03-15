@@ -41,7 +41,15 @@ const MainScreen = ({ cities, onCityClick, currentCity, placesOptions, offersLis
   const handleMarkerClick = (point: Point) => {
     setSelectedPoint(point);
   };
+  // фильтры
+  // популярные по умолчанию
+  // цена от низкой к высокой
+  const sortedOffersToTop = filteredOffers.toSorted((a, b) => a.price - b.price);
 
+  // цена от высокой к низкой
+  const sortedOffersToBottom = filteredOffers.toSorted((a, b) => b.price - a.price);
+  // от высокого рейтинга к низкому
+  const sortedOffersByRating = filteredOffers.toSorted((a, b) => b.rating - a.rating);
   return(
     <div className="page page--gray page--main">
       <Helmet>
