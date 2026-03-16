@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Header from '../../components/layout/header';
 import Map from '../../components/map/map';
 import { Helmet } from 'react-helmet-async';
-import { OffersListType, Point, Points } from '../../types/types';
+import { OffersListType, Point, Points} from '../../types/types';
 import OfferList from '../../components/offer/offer-list';
 import LocationsList from '../../components/locations/locations-list';
 import PlacesSorting from '../../components/places-sorting/places-sorting';
@@ -41,15 +41,22 @@ const MainScreen = ({ cities, onCityClick, currentCity, placesOptions, offersLis
   const handleMarkerClick = (point: Point) => {
     setSelectedPoint(point);
   };
-  // фильтры
-  // популярные по умолчанию
-  // цена от низкой к высокой
-  const sortedOffersToTop = filteredOffers.toSorted((a, b) => a.price - b.price);
 
-  // цена от высокой к низкой
-  const sortedOffersToBottom = filteredOffers.toSorted((a, b) => b.price - a.price);
-  // от высокого рейтинга к низкому
-  const sortedOffersByRating = filteredOffers.toSorted((a, b) => b.rating - a.rating);
+  const handleSortingOffers = (value: string) => {
+    switch(value){
+      case 'Popular':
+        return filteredOffers;
+      case 'Price: low to high':
+        return filteredOffers.toSorted((a, b) => a.price - b.price);
+      case 'Price: high to low':
+        return filteredOffers.toSorted((a, b) => b.price - a.price);
+      case 'Top rated first':
+        return filteredOffers.toSorted((a, b) => b.rating - a.rating);
+      default:
+        return filteredOffers;
+    }
+  };
+
   return(
     <div className="page page--gray page--main">
       <Helmet>
@@ -71,6 +78,7 @@ const MainScreen = ({ cities, onCityClick, currentCity, placesOptions, offersLis
               <b className="places__found">{filteredOffers.length} places to stay in {currentCity}</b>
               <PlacesSorting
                 placesOptions={placesOptions}
+                handleSortingOffers={handleSortingOffers}
               />
               <OfferList
                 filteredOffers={filteredOffers}

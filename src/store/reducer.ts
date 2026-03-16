@@ -5,7 +5,8 @@ import { offersList } from '../mocks/offers-list-mocks';
 const initialState = {
   city: 'Paris',
   offers: [] as typeof offersList,
-  toggle: false
+  toggle: false,
+  sortedOffers: [] as typeof offersList
 };
 
 const reducer = createReducer(initialState, (builder) => {

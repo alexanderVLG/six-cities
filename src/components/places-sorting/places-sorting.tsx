@@ -3,24 +3,29 @@ import { useAppDispatch } from '../../hooks/use-app-dispatch';
 import { changeToggle } from '../../store/action';
 type OptionsProps = {
   placesOptions: string[];
+  handleSortingOffers: (value: string) => void;
 }
 
 type OptionProps = {
   option: string;
+  handleSortingOffers: (value: string) => void;
 }
 
-const PlacesOptions = ({option}: OptionProps): JSX.Element => {
+const PlacesOptions = ({option, handleSortingOffers}: OptionProps): JSX.Element => {
   const optionClass = option === 'Popular'
     ? 'places__option places__option--active'
     : 'places__option';
 
+  const onSortingItemClick = (value: string) => {
+    handleSortingOffers(value);
+  };
   return(
-    <li className={optionClass} tabIndex={0}>{option}</li>
+    <li className={optionClass} tabIndex={0} onClick={() => onSortingItemClick(option)}>{option}</li>
   );
 };
 
 
-const PlacesSorting = ({placesOptions}: OptionsProps):JSX.Element => {
+const PlacesSorting = ({placesOptions, handleSortingOffers}: OptionsProps):JSX.Element => {
   const toggle = useAppSelector((state) => state.toggle);
   const dispatch = useAppDispatch();
   const onSortingListClick = (value: boolean) => {
@@ -39,7 +44,13 @@ const PlacesSorting = ({placesOptions}: OptionsProps):JSX.Element => {
         </svg>
       </span>
       <ul className={placesListClass}>
-        {placesOptions.map((option) => <PlacesOptions key={option} option={option} />)}
+        {placesOptions.map((option) => (
+          <PlacesOptions
+            key={option}
+            option={option}
+            handleSortingOffers={handleSortingOffers}
+          />
+        ))}
       </ul>
     </form>
   );
