@@ -6,6 +6,8 @@ import { OffersListType, Point, Points} from '../../types/types';
 import OfferList from '../../components/offer/offer-list';
 import LocationsList from '../../components/locations/locations-list';
 import PlacesSorting from '../../components/places-sorting/places-sorting';
+import { useAppDispatch } from '../../hooks/use-app-dispatch';
+import { setSortedOffers, changeToggle } from '../../store/action';
 
 
 type MainPageProps = {
@@ -17,18 +19,44 @@ type MainPageProps = {
 }
 
 const MainScreen = ({ cities, onCityClick, currentCity, placesOptions, offersList}: MainPageProps): JSX.Element => {
-  const filteredOffers = offersList.filter(
+  const dispatch = useAppDispatch();
+
+  const sortedOffers = offersList.filter(
     (offer) => offer.city.name === currentCity
   );
 
-  const points: Points = filteredOffers.map((offer) => ({
+  const handleSortingOffers = (value: string) => {
+    let result: OffersListType[] = [];
+
+    switch(value){
+      case 'Popular':
+        result = sortedOffers;
+        break;
+      case 'Price: low to high':
+        result = sortedOffers.toSorted((a, b) => a.price - b.price);
+        break;
+      case 'Price: high to low':
+        result = sortedOffers.toSorted((a, b) => b.price - a.price);
+        break;
+      case 'Top rated first':
+        result = sortedOffers.toSorted((a, b) => b.rating - a.rating);
+        break;
+      default:
+        result = sortedOffers;
+    }
+    dispatch(setSortedOffers(result));
+
+    dispatch(changeToggle(false));
+  };
+
+  const points: Points = sortedOffers.map((offer) => ({
     title: offer.title,
     latitude: offer.location.latitude,
     longitude: offer.location.longitude,
     zoom: offer.location.zoom
   }));
 
-  const currentCityData = filteredOffers[0]?.city || offersList[0]?.city;
+  const currentCityData = sortedOffers[0]?.city || offersList[0]?.city;
 
   const [selectedPoint, setSelectedPoint] = useState<Point | undefined>(undefined);
 
@@ -40,21 +68,6 @@ const MainScreen = ({ cities, onCityClick, currentCity, placesOptions, offersLis
 
   const handleMarkerClick = (point: Point) => {
     setSelectedPoint(point);
-  };
-
-  const handleSortingOffers = (value: string) => {
-    switch(value){
-      case 'Popular':
-        return filteredOffers;
-      case 'Price: low to high':
-        return filteredOffers.toSorted((a, b) => a.price - b.price);
-      case 'Price: high to low':
-        return filteredOffers.toSorted((a, b) => b.price - a.price);
-      case 'Top rated first':
-        return filteredOffers.toSorted((a, b) => b.rating - a.rating);
-      default:
-        return filteredOffers;
-    }
   };
 
   return(
@@ -75,13 +88,13 @@ const MainScreen = ({ cities, onCityClick, currentCity, placesOptions, offersLis
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{filteredOffers.length} places to stay in {currentCity}</b>
+              <b className="places__found">{sortedOffers.length} places to stay in {currentCity}</b>
               <PlacesSorting
                 placesOptions={placesOptions}
                 handleSortingOffers={handleSortingOffers}
               />
               <OfferList
-                filteredOffers={filteredOffers}
+                filteredOffers={sortedOffers}
                 onListItemHover={handleListItemHover}
               />
             </section>

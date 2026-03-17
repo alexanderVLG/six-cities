@@ -19,7 +19,7 @@ export type OffersListType = {
   isFavorite: boolean;
   isPremium: boolean;
   rating: number;
-  previewImage?: string;
+  previewImage: string;
 }
 
 export type NearOffersType = OffersListType & {

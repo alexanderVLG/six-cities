@@ -1,12 +1,14 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { getOffers, changeCity, changeToggle } from './action';
+import { getOffers, changeCity, changeToggle, setSortedOffers, setSortingType } from './action';
+import { OffersListType } from '../types/types';
 import { offersList } from '../mocks/offers-list-mocks';
 
 const initialState = {
   city: 'Paris',
-  offers: [] as typeof offersList,
+  offers: [] as OffersListType[],
   toggle: false,
-  sortedOffers: [] as typeof offersList
+  sortedOffers: [] as OffersListType[],
+  sortingType: 'Popular'
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -19,6 +21,12 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(changeToggle, (state, action) => {
       state.toggle = action.payload;
+    })
+    .addCase(setSortedOffers, (state, action) => {
+      state.sortedOffers = action.payload;
+    })
+    .addCase(setSortingType, (state, action) => {
+      state.sortingType = action.payload;
     });
 });
 
