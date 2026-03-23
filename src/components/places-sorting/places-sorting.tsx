@@ -67,8 +67,11 @@ const PlacesSorting = ({ placesOptions, handleSortingOffers }: OptionsProps): JS
             key={option}
             option={option}
             handleSortingOffers={handleSortingOffers}
-            isActive={option === currentSortingType} // Подсветка активного пункта
-            onClose={() => dispatch(changeToggle(false))} // Закрытие списка при клике
+            isActive={option === currentSortingType}
+            onClose={() => {
+              dispatch(setSortingType(option));
+              dispatch(changeToggle(false));
+            }}
           />
         ))}
       </ul>
