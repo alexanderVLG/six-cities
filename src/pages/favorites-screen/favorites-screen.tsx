@@ -5,6 +5,7 @@ import Footer from '../../components/layout/footer';
 import Header from '../../components/layout/header';
 import Card from '../../components/card/card';
 import { CITIES } from '../../const';
+import { useAppSelector } from '../../hooks/use-app-selector';
 
 type FavoritesProps = {
   offersList: OffersListType[];
@@ -34,8 +35,7 @@ const FavoritesItem = ({offersList}: FavoritesProps): JSX.Element => (
           ))
       }
     </div>
-  </li>
-);
+  </li>);
 
 const FavoriteList = ({offersList}: FavoritesProps): JSX.Element => {
 
@@ -50,7 +50,8 @@ const FavoriteList = ({offersList}: FavoritesProps): JSX.Element => {
 };
 
 
-function FavoritesScreen({offersList}: FavoritesProps):JSX.Element {
+function FavoritesScreen():JSX.Element {
+  const offersList = useAppSelector((state) => state.offers);
   return(
     <div className="page">
       <Helmet>

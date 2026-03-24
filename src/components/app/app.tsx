@@ -1,6 +1,6 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {HelmetProvider} from 'react-helmet-async';
-import { OffersListType, ReviewType, NearOffersType } from '../../types/types';
+import { ReviewType, NearOffersType } from '../../types/types';
 import { AppRoute, AuthorizationStatus} from '../../const';
 import { useAppSelector } from '../../hooks/use-app-selector';
 import { useAppDispatch } from '../../hooks/use-app-dispatch';
@@ -13,14 +13,13 @@ import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import PrivateRoute from '../private-route/private-route';
 
 type AppHotelsProps = {
-  offersList: OffersListType[];
   reviews: ReviewType[];
   nearOffers: NearOffersType[];
   cities: string[];
   placesOptions: string[];
 }
 
-function App({ offersList, reviews, cities, placesOptions, nearOffers}: AppHotelsProps): JSX.Element {
+function App({ reviews, cities, placesOptions, nearOffers}: AppHotelsProps): JSX.Element {
   const city = useAppSelector((state) => state.city);
   const dispatch = useAppDispatch();
 
@@ -36,7 +35,6 @@ function App({ offersList, reviews, cities, placesOptions, nearOffers}: AppHotel
             path={AppRoute.MAIN}
             element={
               <MainScreen
-                offersList={offersList}
                 cities={cities}
                 onCityClick={handleCityLinkClick}
                 currentCity={city}
@@ -50,7 +48,7 @@ function App({ offersList, reviews, cities, placesOptions, nearOffers}: AppHotel
               <PrivateRoute
                 authorizationStatus={AuthorizationStatus.Auth}
               >
-                <FavoritesScreen offersList={offersList} />
+                <FavoritesScreen />
               </PrivateRoute>
             }
           />

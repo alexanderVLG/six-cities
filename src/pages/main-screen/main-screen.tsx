@@ -12,15 +12,15 @@ import { useAppSelector } from '../../hooks/use-app-selector';
 
 
 type MainPageProps = {
-  offersList: OffersListType[];
   cities: string[];
   onCityClick: (value: string) => void;
   currentCity: string;
   placesOptions: string[];
 }
 
-const MainScreen = ({ cities, onCityClick, currentCity, placesOptions, offersList}: MainPageProps): JSX.Element => {
+const MainScreen = ({ cities, onCityClick, currentCity, placesOptions}: MainPageProps): JSX.Element => {
   const dispatch = useAppDispatch();
+  const offersList = useAppSelector((state) => state.offers);
   const sortedOffers = useAppSelector((state) => state.sortedOffers);
   const [selectedPoint, setSelectedPoint] = useState<Point | undefined>(undefined);
   useEffect(() => {
