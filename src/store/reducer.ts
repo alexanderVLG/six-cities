@@ -4,13 +4,12 @@ import { OffersListType } from '../types/types';
 import { offersList } from '../mocks/offers-list-mocks';
 
 const initialState = {
-  city: 'Paris',
-  offers: [] as OffersListType[],
+  city: { name: 'Paris', location: { latitude: 48.8566, longitude: 2.3522, zoom: 10 } },
+  offers: offersList,
   toggle: false,
   sortedOffers: [] as OffersListType[],
   sortingType: 'Popular'
 };
-
 const reducer = createReducer(initialState, (builder) => {
   builder
     .addCase(getOffers, (state) => {

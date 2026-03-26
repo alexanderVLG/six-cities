@@ -2,7 +2,6 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {HelmetProvider} from 'react-helmet-async';
 import { ReviewType, NearOffersType } from '../../types/types';
 import { AppRoute, AuthorizationStatus} from '../../const';
-import { useAppSelector } from '../../hooks/use-app-selector';
 import { useAppDispatch } from '../../hooks/use-app-dispatch';
 import { changeCity } from '../../store/action';
 import MainScreen from '../../pages/main-screen/main-screen';
@@ -20,7 +19,6 @@ type AppHotelsProps = {
 }
 
 function App({ reviews, cities, placesOptions, nearOffers}: AppHotelsProps): JSX.Element {
-  const city = useAppSelector((state) => state.city);
   const dispatch = useAppDispatch();
 
   const handleCityLinkClick = (value: string) => {
@@ -37,7 +35,6 @@ function App({ reviews, cities, placesOptions, nearOffers}: AppHotelsProps): JSX
               <MainScreen
                 cities={cities}
                 onCityClick={handleCityLinkClick}
-                currentCity={city}
                 placesOptions={placesOptions}
               />
             }
@@ -62,7 +59,7 @@ function App({ reviews, cities, placesOptions, nearOffers}: AppHotelsProps): JSX
               <OfferScreen
                 reviews={reviews}
                 nearOffers={nearOffers}
-                currentCity={city}
+                currentCityName={currentCityName}
               />
             }
           />

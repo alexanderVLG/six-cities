@@ -1,19 +1,19 @@
 
 type LocationsProps = {
   cities: string[];
-  onCityClick: (currentCity:string) => void;
-  currentCity: string;
+  onCityClick: (currentCityName:string) => void;
+  currentCityName: string;
 }
 
 type LocationItemProps = {
   city: string;
-  onCityClick: (currentCity:string) => void;
-  currentCity: string;
+  onCityClick: (currentCityName:string) => void;
+  currentCityName: string;
 }
 
-const LocationsItem = ({city, onCityClick, currentCity}: LocationItemProps): JSX.Element => {
+const LocationsItem = ({city, onCityClick, currentCityName}: LocationItemProps): JSX.Element => {
 
-  const classCityItem = city === currentCity
+  const classCityItem = city === currentCityName
     ? 'locations__item-link tabs__item tabs__item--active'
     : 'locations__item-link tabs__item';
 
@@ -26,11 +26,11 @@ const LocationsItem = ({city, onCityClick, currentCity}: LocationItemProps): JSX
   );
 };
 
-const LocationsList = ({cities, onCityClick, currentCity}: LocationsProps): JSX.Element => (
+const LocationsList = ({cities, onCityClick, currentCityName}: LocationsProps): JSX.Element => (
   <div className="tabs">
     <section className="locations container">
       <ul className="locations__list tabs__list">
-        {cities.map((city) => <LocationsItem key={city} city={city} onCityClick={onCityClick} currentCity={currentCity}/>)}
+        {cities.map((city) => <LocationsItem key={city} city={city} onCityClick={onCityClick} currentCityName={currentCityName}/>)}
       </ul>
     </section>
   </div>

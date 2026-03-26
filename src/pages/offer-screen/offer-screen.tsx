@@ -10,14 +10,14 @@ import { offersList } from '../../mocks/offers-list-mocks';
 type OfferScreenProps = {
   reviews: ReviewType[];
   nearOffers: NearOffersType[];
-  currentCity: string;
+  currentCityName: string;
 }
 
 const offerInsideList = ['Wi-fi', 'Towels', 'Heating', 'Dishwasher', 'Kitchen', 'Soap'];
 
-function OfferScreen({reviews, nearOffers, currentCity}: OfferScreenProps): JSX.Element {
+function OfferScreen({reviews, nearOffers, currentCityName}: OfferScreenProps): JSX.Element {
   const filteredOffers = nearOffers.filter(
-    (offer) => offer.city.name === currentCity
+    (offer) => offer.city.name === currentCityName
   );
 
   const points: Points = filteredOffers.map((offer) => ({

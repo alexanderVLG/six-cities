@@ -14,26 +14,25 @@ import { useAppSelector } from '../../hooks/use-app-selector';
 type MainPageProps = {
   cities: string[];
   onCityClick: (value: string) => void;
-  currentCity: string;
   placesOptions: string[];
 }
 
-const MainScreen = ({ cities, onCityClick, currentCity, placesOptions}: MainPageProps): JSX.Element => {
+const MainScreen = ({ cities, onCityClick, placesOptions}: MainPageProps): JSX.Element => {
   const dispatch = useAppDispatch();
+  const currentCityName = useAppSelector((state) => state.city.name);
   const offersList = useAppSelector((state) => state.offers);
   const sortedOffers = useAppSelector((state) => state.sortedOffers);
   const [selectedPoint, setSelectedPoint] = useState<Point | undefined>(undefined);
   useEffect(() => {
     const initialOffers = offersList.filter(
-      (offer) => offer.city.name === currentCity
+      (offer) => offer.city.name === currentCityName
     );
     dispatch(setSortedOffers(initialOffers));
-  }, [currentCity, offersList, dispatch]);
-
+  }, [currentCityName, offersList, dispatch]);
   const handleSortingOffers = (value: string) => {
     let result: OffersListType[] = [];
 
-    const baseOffers = sortedOffers || offersList.filter((offer) => offer.city.name === currentCity);
+    const baseOffers = sortedOffers || offersList.filter((offer) => offer.city.name === currentCityName);
 
     switch(value){
       case 'Popular':
@@ -56,10 +55,6 @@ const MainScreen = ({ cities, onCityClick, currentCity, placesOptions}: MainPage
     dispatch(changeToggle(false));
   };
 
-  if (!sortedOffers) {
-    return <div className="page page--gray page--main"><Header /><main>Loading...</main></div>;
-  }
-
   const points: Points = sortedOffers.map((offer) => ({
     title: offer.title,
     latitude: offer.location.latitude,
@@ -67,8 +62,7 @@ const MainScreen = ({ cities, onCityClick, currentCity, placesOptions}: MainPage
     zoom: offer.location.zoom
   }));
 
-  const currentCityData = sortedOffers[0]?.city || offersList[0]?.city;
-
+  const currentCityData = useAppSelector((state) => state.city);
   const handleListItemHover = (listItemName: string) => {
     const currentPoint = points.find((point) => point.title === listItemName);
 
@@ -91,13 +85,13 @@ const MainScreen = ({ cities, onCityClick, currentCity, placesOptions}: MainPage
         <LocationsList
           cities={cities}
           onCityClick={onCityClick}
-          currentCity={currentCity}
+          currentCityName={currentCityName}
         />
         <div className="cities">
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{sortedOffers.length} places to stay in {currentCity}</b>
+              <b className="places__found">{sortedOffers.length} places to stay in {currentCityName}</b>
               <PlacesSorting
                 placesOptions={placesOptions}
                 handleSortingOffers={handleSortingOffers}
