@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Header from '../../components/layout/header';
 import Map from '../../components/map/map';
 import { Helmet } from 'react-helmet-async';
-import { OffersListType, Point, Points} from '../../types/types';
+import { CityType, OffersListType, Point, Points} from '../../types/types';
 import OfferList from '../../components/offer/offer-list';
 import LocationsList from '../../components/locations/locations-list';
 import PlacesSorting from '../../components/places-sorting/places-sorting';
@@ -12,12 +12,11 @@ import { useAppSelector } from '../../hooks/use-app-selector';
 
 
 type MainPageProps = {
-  cities: string[];
-  onCityClick: (value: object) => void;
+  onCityClick: (value: CityType) => void;
   placesOptions: string[];
 }
 
-const MainScreen = ({ cities, onCityClick, placesOptions}: MainPageProps): JSX.Element => {
+const MainScreen = ({ onCityClick, placesOptions}: MainPageProps): JSX.Element => {
   const dispatch = useAppDispatch();
   const currentCityName = useAppSelector((state) => state.city.name);
   const offersList = useAppSelector((state) => state.offers);
@@ -83,9 +82,7 @@ const MainScreen = ({ cities, onCityClick, placesOptions}: MainPageProps): JSX.E
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <LocationsList
-          cities={cities}
           onCityClick={onCityClick}
-          currentCityName={currentCityName}
         />
         <div className="cities">
           <div className="cities__places-container container">

@@ -17,7 +17,6 @@ root.render(
       <App
         reviews={reviews}
         nearOffers={nearOffers}
-        cities={CITIES}
         placesOptions={PLACES_OPTIONS}
       />
     </Provider>

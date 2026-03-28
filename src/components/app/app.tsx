@@ -1,6 +1,6 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {HelmetProvider} from 'react-helmet-async';
-import { ReviewType, NearOffersType } from '../../types/types';
+import { ReviewType, NearOffersType, CityType } from '../../types/types';
 import { AppRoute, AuthorizationStatus} from '../../const';
 import { useAppDispatch } from '../../hooks/use-app-dispatch';
 import { changeCity } from '../../store/action';
@@ -21,7 +21,7 @@ type AppHotelsProps = {
 function App({ reviews, cities, placesOptions, nearOffers}: AppHotelsProps): JSX.Element {
   const dispatch = useAppDispatch();
 
-  const handleCityLinkClick = (value: object) => {
+  const handleCityLinkClick = (value: CityType) => {
     dispatch(changeCity(value));
   };
 
