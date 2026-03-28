@@ -13,7 +13,7 @@ import { useAppSelector } from '../../hooks/use-app-selector';
 
 type MainPageProps = {
   cities: string[];
-  onCityClick: (value: string) => void;
+  onCityClick: (value: object) => void;
   placesOptions: string[];
 }
 

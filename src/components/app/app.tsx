@@ -21,7 +21,7 @@ type AppHotelsProps = {
 function App({ reviews, cities, placesOptions, nearOffers}: AppHotelsProps): JSX.Element {
   const dispatch = useAppDispatch();
 
-  const handleCityLinkClick = (value: string) => {
+  const handleCityLinkClick = (value: object) => {
     dispatch(changeCity(value));
   };
 
@@ -59,7 +59,6 @@ function App({ reviews, cities, placesOptions, nearOffers}: AppHotelsProps): JSX
               <OfferScreen
                 reviews={reviews}
                 nearOffers={nearOffers}
-                currentCityName={currentCityName}
               />
             }
           />

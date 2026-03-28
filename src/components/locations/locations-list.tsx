@@ -1,14 +1,14 @@
 
 type LocationsProps = {
   cities: string[];
-  onCityClick: (currentCityName:string) => void;
-  currentCityName: string;
+  onCityClick: (currentCityName: object) => void;
+  currentCityName: object;
 }
 
 type LocationItemProps = {
   city: string;
-  onCityClick: (currentCityName:string) => void;
-  currentCityName: string;
+  onCityClick: (currentCityName: object) => void;
+  currentCityName: object;
 }
 
 const LocationsItem = ({city, onCityClick, currentCityName}: LocationItemProps): JSX.Element => {

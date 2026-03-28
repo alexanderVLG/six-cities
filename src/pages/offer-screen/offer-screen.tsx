@@ -6,16 +6,17 @@ import { ReviewType, NearOffersType, Point, Points } from '../../types/types';
 import Map from '../../components/map/map';
 import NearPlaces from '../../components/offer/near-places';
 import { offersList } from '../../mocks/offers-list-mocks';
+import { useAppSelector } from '../../hooks/use-app-selector';
 
 type OfferScreenProps = {
   reviews: ReviewType[];
   nearOffers: NearOffersType[];
-  currentCityName: string;
 }
 
 const offerInsideList = ['Wi-fi', 'Towels', 'Heating', 'Dishwasher', 'Kitchen', 'Soap'];
 
-function OfferScreen({reviews, nearOffers, currentCityName}: OfferScreenProps): JSX.Element {
+function OfferScreen({reviews, nearOffers}: OfferScreenProps): JSX.Element {
+  const currentCityName = useAppSelector((state) => state.city.name);
   const filteredOffers = nearOffers.filter(
     (offer) => offer.city.name === currentCityName
   );

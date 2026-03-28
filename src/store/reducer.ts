@@ -1,15 +1,24 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { getOffers, changeCity, changeToggle, setSortedOffers, setSortingType } from './action';
-import { OffersListType } from '../types/types';
+import { CityType, OffersListType } from '../types/types';
 import { offersList } from '../mocks/offers-list-mocks';
 
-const initialState = {
-  city: { name: 'Paris', location: { latitude: 48.8566, longitude: 2.3522, zoom: 10 } },
+type initialStateProp = {
+  city: CityType;
+  offers: OffersListType[];
+  toggle: boolean;
+  sortedOffers: OffersListType[];
+  sortingType: string;
+}
+
+const initialState: initialStateProp = {
+  city: { name: 'Paris', location: { latitude: 48.85661, longitude: 2.351499, zoom: 13 } },
   offers: offersList,
   toggle: false,
-  sortedOffers: [] as OffersListType[],
+  sortedOffers: [],
   sortingType: 'Popular'
 };
+
 const reducer = createReducer(initialState, (builder) => {
   builder
     .addCase(getOffers, (state) => {
