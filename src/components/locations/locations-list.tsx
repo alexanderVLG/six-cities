@@ -1,36 +1,37 @@
 import { useAppSelector } from '../../hooks/use-app-selector';
-import { CityType } from '../../types/types';
+import { CITIES } from '../../const';
 
 type LocationsProps = {
-  cities: string[];
-  onCityClick: (currentCityName: CityType) => void;
+  onCityClick: (currentCityName: string) => void;
 }
 
 type LocationItemProps = {
-  city: string;
-  onCityClick: (currentCityName: CityType) => void;
+  cityName: string;
+  onCityClick: (currentCityName: string) => void;
 }
 
-const LocationsItem = ({city, onCityClick}: LocationItemProps): JSX.Element => {
-  const currentCityName = useAppSelector((state) => state.city);
-  const classCityItem = city === currentCityName.name;
+const citiesName = CITIES.map((city) => city.name);
+
+const LocationsItem = ({cityName, onCityClick }: LocationItemProps): JSX.Element => {
+  const currentCityName = useAppSelector((state) => state.city.name);
+  const classCityItem = cityName === currentCityName
     ? 'locations__item-link tabs__item tabs__item--active'
     : 'locations__item-link tabs__item';
 
   return (
-    <li onClick={() => onCityClick(city)} className="locations__item">
+    <li onClick={() => onCityClick(cityName)} className="locations__item">
       <a className={classCityItem} href="#">
-        <span>{city}</span>
+        <span>{cityName}</span>
       </a>
     </li>
   );
 };
 
-const LocationsList = ({cities, onCityClick}: LocationsProps): JSX.Element => (
+const LocationsList = ({onCityClick}: LocationsProps): JSX.Element => (
   <div className="tabs">
     <section className="locations container">
       <ul className="locations__list tabs__list">
-        {cities.map((city) => <LocationsItem key={city} city={city} onCityClick={onCityClick} currentCityName={currentCityName}/>)}
+        {citiesName.map((city) => <LocationsItem key={city} cityName={city} onCityClick={onCityClick} />)}
       </ul>
     </section>
   </div>
