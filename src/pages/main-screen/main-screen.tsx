@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Header from '../../components/layout/header';
 import Map from '../../components/map/map';
 import { Helmet } from 'react-helmet-async';
+import { CITIES } from '../../const';
 import { CityType, OffersListType, Point, Points} from '../../types/types';
 import OfferList from '../../components/offer/offer-list';
 import LocationsList from '../../components/locations/locations-list';
@@ -12,11 +13,12 @@ import { useAppSelector } from '../../hooks/use-app-selector';
 
 
 type MainPageProps = {
-  onCityClick: (value: CityType) => void;
+  onCityClick: (value: string) => void;
   placesOptions: string[];
+  cities: CityType[];
 }
 
-const MainScreen = ({ onCityClick, placesOptions}: MainPageProps): JSX.Element => {
+const MainScreen = ({ cities, onCityClick, placesOptions}: MainPageProps): JSX.Element => {
   const dispatch = useAppDispatch();
   const currentCityName = useAppSelector((state) => state.city.name);
   const offersList = useAppSelector((state) => state.offers);
@@ -61,7 +63,7 @@ const MainScreen = ({ onCityClick, placesOptions}: MainPageProps): JSX.Element =
     zoom: offer.location.zoom
   }));
 
-  const currentCityData = useAppSelector((state) => state.city);
+  const currentCityData = cities.find((city) => city.name === currentCityName) ?? CITIES[0];
   const handleListItemHover = (listItemName: string) => {
     const currentPoint = points.find((point) => point.title === listItemName);
 

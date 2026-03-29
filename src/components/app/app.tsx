@@ -15,13 +15,18 @@ type AppHotelsProps = {
   reviews: ReviewType[];
   nearOffers: NearOffersType[];
   placesOptions: string[];
+  cities: CityType[];
 }
 
-function App({ reviews, placesOptions, nearOffers}: AppHotelsProps): JSX.Element {
+function App({ cities, reviews, placesOptions, nearOffers}: AppHotelsProps): JSX.Element {
   const dispatch = useAppDispatch();
 
-  const handleCityLinkClick = (value: CityType) => {
-    dispatch(changeCity(value));
+  const handleCityClick = (cityName: string) => {
+    const selectedCity = cities.find((city) => city.name === cityName);
+    if(selectedCity) {
+      dispatch(changeCity(selectedCity));
+    }
+
   };
 
   return (
@@ -32,7 +37,8 @@ function App({ reviews, placesOptions, nearOffers}: AppHotelsProps): JSX.Element
             path={AppRoute.MAIN}
             element={
               <MainScreen
-                onCityClick={handleCityLinkClick}
+                cities={cities}
+                onCityClick={handleCityClick}
                 placesOptions={placesOptions}
               />
             }
