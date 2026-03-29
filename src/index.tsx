@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import App from './components/app/app';
-import { CITIES, PLACES_OPTIONS} from './const';
+import { PLACES_OPTIONS} from './const';
 import { reviews } from './mocks/reviews-mocks';
 import { nearOffers } from './mocks/near-offers-mocks';
 import {store} from './store/index';

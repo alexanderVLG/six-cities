@@ -14,11 +14,10 @@ import PrivateRoute from '../private-route/private-route';
 type AppHotelsProps = {
   reviews: ReviewType[];
   nearOffers: NearOffersType[];
-  cities: string[];
   placesOptions: string[];
 }
 
-function App({ reviews, cities, placesOptions, nearOffers}: AppHotelsProps): JSX.Element {
+function App({ reviews, placesOptions, nearOffers}: AppHotelsProps): JSX.Element {
   const dispatch = useAppDispatch();
 
   const handleCityLinkClick = (value: CityType) => {
@@ -33,7 +32,6 @@ function App({ reviews, cities, placesOptions, nearOffers}: AppHotelsProps): JSX
             path={AppRoute.MAIN}
             element={
               <MainScreen
-                cities={cities}
                 onCityClick={handleCityLinkClick}
                 placesOptions={placesOptions}
               />
