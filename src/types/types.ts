@@ -62,3 +62,5 @@ export type Point = Pick<OffersListType, 'title'> &
   Pick<OffersListType['location'], 'latitude' | 'longitude' | 'zoom'>;
 
 export type Points = Point[];
+
+export type Token = string;
